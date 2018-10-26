@@ -1,4 +1,4 @@
-<% @site_title = ENV["site_title"] %>
+<% @site_title = ENV["SITE_TITLE"] %>
 <!DOCTYPE html>
 <html lang=en>
   <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><% @site_title %></title>
+    <title><%= @site_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

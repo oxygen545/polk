@@ -1,3 +1,4 @@
+<% @site_title = ENV["SITE_TITLE"] %>
 <header>
   <div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
@@ -6,12 +7,15 @@
 <%# this indicates we are coming from the unimplemented homes controller probably the home page or a link to the home page%>
 <% @nav_toggle_text = "More Info -> " %>
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white"><%= link_to "Home", pages_path, :class =>"text-white" %></h4>
+          <h4 class="text-white"><%= link_to @site_title, pages_path, :class =>"text-white" %></h4>
           <p class="text-muted"><%= @site_title %></p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h5 class="text-white">Links</h5>
           <ul class="list-unstyled">
+            <li>
+              <h6><%= link_to "Sign In", new_user_session_path, :class =>"text-white" %></h6>
+            </li>
             <% Page.find_each do |p| %>
               <li><h6><%= link_to p.link, page_path(p), :class =>"text-white" %></h6></li>
             <% end %>
