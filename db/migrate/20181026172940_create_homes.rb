@@ -6,7 +6,7 @@ class CreateHomes < ActiveRecord::Migration[5.2]
       t.string :subtitle
       t.string :heading
       t.string :subheading
-      t.int :weight
+      t.integer :weight
       t.text :body
 
       t.timestamps
