@@ -36,7 +36,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'activeadmin'
 gem 'bootstrap', '~> 4.1.3'
-gem "bootswatch", github: "thomaspark/bootswatch"
 gem 'google-cloud-storage'
 gem 'seed_dump'
 
