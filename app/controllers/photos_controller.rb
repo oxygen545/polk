@@ -1,5 +1,9 @@
 class PhotosController < InheritedResources::Base
 
+	def delete
+		photo.image.purge
+	end
+
   private
 
     def photo_params

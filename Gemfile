@@ -38,7 +38,6 @@ gem 'activeadmin'
 gem 'bootstrap', '~> 4.1.3'
 gem 'google-cloud-storage'
 gem 'seed_dump'
-gem 'omniauth'
 
 group :production do
   gem 'pg'

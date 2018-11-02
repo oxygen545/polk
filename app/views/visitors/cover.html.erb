@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "shared/cover" %>
 
 <% bg = Photo.find_by page_name: "cover" %>
+<% if bg != nil %>
  <style>
  body { 
   background: url(<%= url_for(bg.image)%>) no-repeat center; 
@@ -12,6 +13,7 @@
  
 }
 </style>
+<% end %>
 </head>
   <body class="text-center" >
 

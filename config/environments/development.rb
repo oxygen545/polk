@@ -28,7 +28,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :google
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -63,9 +63,9 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.gmail.com',
     :port                 => 587,
-    :domain               => Rails.application.secrets.domain_name,
-    :user_name            => Rails.application.secrets.email_provider_username,
-    :password             => Rails.application.secrets.email_provider_password,
+    :domain               => ENV['GMAIL_DOMAIN'],
+    :user_name            => ENV['GMAIL_USERNAME'],
+    :password             => ENV['GMAIL_PASSWORD'],
     :authentication       => 'login',
     :enable_starttls_auto => true,
   }

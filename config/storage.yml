@@ -6,6 +6,10 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+production:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
@@ -18,11 +22,11 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: Rails.application.secrets.gcs_project
+  project: <%= ENV['GCS_PROJECT'] %>
 #  json_decode(getenv('GOOGLE_CREDENTIALS'), true)
-  credentials: Rails.application.secrets.google_credentials
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
 # credentials: <%= Rails.root.join("../keys/adhoc-gcs-key.json") %>
-  bucket: Rails.application.secrets.gcs_bucket
+  bucket: <%= ENV['GCS_BUCKET'] %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
