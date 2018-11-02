@@ -1,20 +1,20 @@
 class VisitorsController < ApplicationController
-	
-	def jumbotron
-		render "visitors/jumbotron"
-	end
-	
-	def album
-		render "visitors/album"
+
+	def cover
 	end
 
 	def carousel
-		render "visitors/carousel"
 	end
 
-	def cover
-		render "visitors/cover"
+	def pricing
 	end
+
+	def jumbotron
+	end
+	
+	def album
+	end
+
 
   private
 

@@ -1,15 +1,32 @@
-    <%= stylesheet_link_tag "shared/cyborg" %>
-   <%= stylesheet_link_tag "shared/cover" %>
-  </head>
+<%= stylesheet_link_tag "shared/cyborg" %>
+<%= stylesheet_link_tag "shared/cover" %>
 
-  <body class="text-center">
+<% bg = Photo.find_by page_name: "cover" %>
+ <style>
+ body { 
+  background: url(<%= url_for(bg.image)%>) no-repeat center; 
+   -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% x 100%;
+ 
+}
+</style>
+</head>
+  <body class="text-center" >
 
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">One Simple page with a call to action can be all you need</p>
-        <p class="lead">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" >
+      <main role="main" class="inner cover m-auto" >
+        <h1 class="cover-heading" text-align="left">Cover your page</h1>
+        <p class="lead mt-3 mb-5">One Simple page with a call to action can be all you need</p>
+        <p class="lead mb-0">
           <a href="/carousel" class="btn btn-lg btn-secondary">Learn more</a>
         </p>
-      </main>
+        <footer class="text-muted fixed-bottom">
+          <div class="container">
+            <p class="float-left"><%= @site_title %> &copy; 2018</p>
+          </div>
+        </footer>
+    </main>
     </div>
+  </body>

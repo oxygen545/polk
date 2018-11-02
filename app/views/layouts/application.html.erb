@@ -12,17 +12,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <%= alert %>
-    <%= notice %>
-    <main role="main">    
+    <%= stylesheet_link_tag "shared/lux" %>
+    <%= stylesheet_link_tag "shared/adhoc" %>
     <%= yield %>
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-left"><%= @site_title %> &copy; 2018</p>
-      </div>
-    </footer>
-    </main>
+
   </body>
 </html>
