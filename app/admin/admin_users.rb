@@ -1,5 +1,4 @@
 ActiveAdmin.register AdminUser do
-#  permit_params :email, :password, :password_confirmation
 
   index do
     selectable_column
@@ -24,9 +23,8 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
-permit_params do
-  permitted = [:permitted, :attributes]
-  permitted << :other if params[:action] == 'create' && current_user.admin?
-  permitted
-end
+
+def admin_user_params
+      params.require(:admin_user).permit( :email, :password, :password_confirmation)
+    end
 end

@@ -1,5 +1,9 @@
 class VisitorsController < ApplicationController
-
+	
+	def index
+		@user = current_user;
+	end
+	
 	def cover
 	end
 
@@ -14,12 +18,5 @@ class VisitorsController < ApplicationController
 	
 	def album
 	end
-
-
-  private
-
-    def visitor_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
-    end
 
 end
