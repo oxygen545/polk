@@ -1,6 +1,5 @@
 ActiveAdmin.register User do
- # permit_params :username, :email, :password, :password_confirmation, :avatar
-
+ permit_params :username, :email, :password, :password_confirmation
   index do
     selectable_column
     id_column
@@ -30,6 +29,5 @@ ActiveAdmin.register User do
 def user_params
       params.require(:user).permit( :username, :email, :password, :password_confirmation)
     end
-
 
 end

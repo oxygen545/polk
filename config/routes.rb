@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :visitors
+  resources :photos
   root to: "visitors#cover"
   devise_for :users
-  resources :photos
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get "/cover" => "visitors#cover"
