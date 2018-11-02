@@ -27,9 +27,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :google
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -54,6 +51,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Store uploaded files on the local file system (see config/storage.yml for options)
+  config.active_storage.service = :local
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true

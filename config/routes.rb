@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get "/carousel" => "visitors#carousel"
   get "/album" => "visitors#album"
   get "/pricing" => "visitors#pricing"
+  get "/jumbotron" => "visitors#jumbotron"
 
 end
