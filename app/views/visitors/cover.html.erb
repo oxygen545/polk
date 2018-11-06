@@ -1,7 +1,7 @@
 
-<%= stylesheet_link_tag "shared/cyborg" %>
-<%= stylesheet_link_tag "shared/cover" %>
-<%= stylesheet_link_tag "shared/adhoc" %>
+<%= stylesheet_link_tag "cyborg" %>
+<%= stylesheet_link_tag "cover" %>
+<%= stylesheet_link_tag "adhoc" %>
 
 <% bg = Photo.find_by page_name: "cover" %>
   <% if bg != nil %>
@@ -23,16 +23,16 @@
   <!-- End Google Tag Manager (noscript) -->
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" >
     <main role="main" class="inner cover m-auto" >
-      <h1 class="cover-heading" text-align="center"><%= @site_title %></h1>
-      <p class="lead mt-3 mb-5"><%= @welcome_text %></p>
+      <h1 class="cover-heading" text-align="center"><%= ENV['SITE_TITLE'] %></h1>
+      <p class="lead mt-3 mb-5">Welcome to my Portfolio</p>
       <p class="lead mb-0">
-        <a href="/features" class="btn btn-lg btn-secondary">Welcome</a>
+        <a href="/features" class="btn btn-lg btn-secondary">Enjoy.</a>
       </p>
       <footer class="fixed-bottom text-white">
         <div class="container">
-          <p class="float-left"><%= @site_title %> &copy; 2018</p>
+          <p class="float-left"><%= ENV['SITE_TITLE'] %> &copy; 2018</p>
         </div>
       </footer>
     </main>
   </div>
-</body>
+

@@ -1,5 +1,6 @@
-<%= stylesheet_link_tag "shared/cyborg" %>
-<%= stylesheet_link_tag "shared/carousel" %>
+<% @site_title = ENV['SITE_TITLE'] %>
+<%= stylesheet_link_tag "cyborg" %>
+<%= stylesheet_link_tag "carousel" %>
 </head>
   <body background = "">
     <%= alert %>
@@ -8,35 +9,41 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQGLBH7"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-      <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Features and Options</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pricing">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/technologies">Technologies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/styles">Styles</a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">Menu</h4>
+              <%= link_to "Home", "/" , :class =>"text-white"%><br>
+              <%= link_to "Examples", "/examples" , :class =>"text-white"%><br>
+              <%= link_to "Features and Options", "/technologies" , :class =>"text-white"%><br>
+              <%= link_to "Home", "/" , :class =>"text-white"%><br>
+              <%= link_to "Home", "/" , :class =>"text-white"%><br>
+              <p class="text-muted">  </p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Static and Dynamic Examples</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
     </header>
-
     <main role="main">
 
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -50,9 +57,9 @@
             <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Customized Layout</h1>
-                <p>Maybe you need more pizazz than a simple landing page and if you can describe it I can build it. on this page I used a rotating carousel of slides to display different aspects of what I offer. The call to action button on this slide takes to to a page with various examples of page layouts and options</p>
-                <p><a class="btn btn-lg btn-primary" href="/styles" role="button">More styles and pages</a></p>
+                <h1>Basic Website Design</h1>
+                <p>Maybe you need more pizazz than a few simple static landing page. On this page I just used a templates and edited the HTML, CSS and Static pages to suite my needs</p>
+                <p><a class="btn btn-lg btn-primary" href="/static_pages" role="button">More Info</a></p>
               </div>
             </div>
           </div>
@@ -60,9 +67,10 @@
             <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Flexible pricing</h1>
-                <p>My goal is to help you design the website for whatever you need to acomplish at a price that is aligned with your budget.. I have some examples here but the options are unlimited</p>
-                <p><a class="btn btn-lg btn-primary" href="/pricing" role="button">Get an Estimated cost</a></p>
+                <h1></h1>
+                <p>If you need online storefront with some interactivity. Thats No Problem at all.</p>
+                <p>A different layout, add a paging and subpaging system to allow for 3 layers of pages. connect it to google's servicees to store images anyalyze your websites KPI's and use an administrative back-end to manage the contents</p>
+                <p><a class="btn btn-lg btn-primary" href="https://www.github.com/oxygen545/fmn-apothecary" role="button">Code</a>&nbsp;<a class="btn btn-lg btn-secondary" href="https://fmn-apothecary.herokuapp.com" role="button">Live Store</a></p>
               </div>
             </div>
           </div>
@@ -168,4 +176,3 @@
           </div>
         </footer>
 </main>
-</body>

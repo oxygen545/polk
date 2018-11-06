@@ -7,13 +7,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get "/cover" => "visitors#cover"
   get "/features" => "visitors#features"
-  get "/styles" => "visitors#styles"
+  get "/static_pages" => "visitors#static_pages"
   get "/pricing" => "visitors#pricing"
   get "/jumbotron" => "visitors#jumbotron"
-  get "/technologies" => "visitors#technologies"
-  get "/frontend" => "visitors#frontend"
-  get "/midleware" => "visitors#middleware"
-  get "/backend" => "visitors#frontend"
+  get "/tech_stack" => "visitors#tech_stack"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
