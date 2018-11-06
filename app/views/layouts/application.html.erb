@@ -1,4 +1,60 @@
+<%#***************************************************************************
+  Standard Header block
+  should probably make a function call out of this sucker later
+  thats a lot of **************
+
+  
+  One should comment one's code. I'd think
+  
+
+TODO:  Write book and distribute it as a ruby rails application or just read the code..
+If you read this as a book.. Good luck.. Maybe by then when I mention some 
+variable from a long time ago I'll have code links
+or just use whater they are using to comment code and prettyprint?? is that still
+a thing.. I'll get that going real fast...  I should probably git commit -m"Initial Book Commit"
+and maybe get a copy editor or something.. I know one... Hrmm... Maybe tomorrow..
+but tonight I code..
+  I want to paramaterize all the basics for making it easy to deploy
+   P.S. I'm available for hire so don't change anayltics links PLEASE  
+   Ormaybe donate to my paypal I'm super broke as I switched carrers anyways..
+   you can read all about it or check my progress from where ever I'm at to\
+   when ever you get this.. I need the data and I need the money.
+   To get a job as a web dev you need to be able to deliver so if I say
+   I can build it I guess we will see.. Current Status is at 
+   damonhopkins.herokuapp.com
+   Feel free to get in touch at damon@hopkins-family.org
+   Make sure you mention you are contacting me because you say it in the comments
+   of my code and wanted to hire or become a better programmer
+    I'd almost work for free lol.
+
+    Long story longer. and exclusive cause this is the story I dont tell people
+    I changed carrers about 8 years ago where I had stagnated as a C/C++/C#
+    software engineer and then because a UI/UX dev for a bit. It's not my forte
+    but it's enough.. Anyone wanna help.. anyways I wore a lot of different hats
+    They got bought out and before the aqquisian we had meeting,,, I one of 4 IT guys
+    running a shop of about 2-300 outside EDI consults and maybe 60-80 in-house EDI mappers
+    I got outsourced here and there around town to fix our local clients issues
+    and do new stuff.. Learn Access, Learn Excell all the apis how to connect 
+    to the mailserver and even spoof as someone else.. 
+    Ah when the internet was fun.. Maybe THIS will be where I write my book
+    and distribute it This could be.. How not to get a job or maybe this is?
+    anyways follow my github oxygen545.. One Love
+
+****************************************************************************%>
+
+<!-- Set your ENV VARS Here -->
+
 <% @site_title = ENV["SITE_TITLE"] %>
+<% @site_welcome = ENV['SITE_WELCOME'] %>
+<% @site_default_style = ENV["SITE_DEFAULT_STYLE"] %>
+<% @site_default_color = ENV["SITE_DEFAULT_STYLE"] %>
+<% @site_default_extra = ENV["SITE_DEFAULT_STYLE"] %>
+
+<%#***************************************************************************
+****** Begining of the site wide header and foot attached to
+******         every page unless over ridden
+****************************************************************************%>
+
 <!DOCTYPE html>
 <html lang=en>
   <head>
@@ -22,8 +78,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KQGLBH7');</script>
 <!-- End Google Tag Manager -->
+<%#************************************************************************************************************************%>
+******                                       ADHOC WEB DESIGNS COVER PORTFOLIO TEMPLATE
+******
+******
+<%= yield %>
+******
+******                             NEVER CLOSE THE BODY
+******
+******
+******
 
-    <%= yield %>
+
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -32,15 +98,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <%= javascript_include_tag "popper.min" %>
     <%= javascript_include_tag "bootstrap/bootstrap" %>
 
-<!-- Global site tag (gtag.js) - Google Analytics damonhopkins.herokuapp.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128630478-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics damonhopkins.herokuapp.com -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128630478-2"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'UA-128630478-2');
-</script>
+      gtag('config', 'UA-128630478-2');
+      </script>
 
-     </body>
+  </body>
 </html>

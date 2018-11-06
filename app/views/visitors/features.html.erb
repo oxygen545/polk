@@ -4,26 +4,29 @@
   <body background = "">
     <%= alert %>
     <%= notice %>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQGLBH7"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQGLBH7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
       <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
+        <a class="navbar-brand" href="#">Features and Options</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="/pricing">Pricing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="/technologies">Technologies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/styles">Styles</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -47,9 +50,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Pricing</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="/pricing" role="button">Pricing</a></p>
+                <h1>Customized Layout</h1>
+                <p>Maybe you need more pizazz than a simple landing page and if you can describe it I can build it. on this page I used a rotating carousel of slides to display different aspects of what I offer. The call to action button on this slide takes to to a page with various examples of page layouts and options</p>
+                <p><a class="btn btn-lg btn-primary" href="/styles" role="button">More styles and pages</a></p>
               </div>
             </div>
           </div>
@@ -57,9 +60,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="/jumbotron" role="button">Jumbotron</a></p>
+                <h1>Flexible pricing</h1>
+                <p>My goal is to help you design the website for whatever you need to acomplish at a price that is aligned with your budget.. I have some examples here but the options are unlimited</p>
+                <p><a class="btn btn-lg btn-primary" href="/pricing" role="button">Get an Estimated cost</a></p>
               </div>
             </div>
           </div>
@@ -67,9 +70,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="/album" role="button">Album</a></p>
+                <h1>Results matter</h1>
+                <p>Landing pages, forms, mailing lists, custom built interfaces to other web services google, facebook, twitter, etc. I've been building full featured applications from front to back since the mid 90's</p>
+                <p><a class="btn btn-lg btn-primary" href="/technologies" role="button">Technologies Used</a></p>
               </div>
             </div>
           </div>
@@ -156,5 +159,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- /END THE FEATURETTES -->
 
-      </div><!-- /.container -->
+      </div>
+
+        <!-- /.container -->
+          <footer class="fixed-bottom text-white">
+          <div class="container">
+            <p class="float-left"><%= @site_title %> &copy; 2018</p>
+          </div>
+        </footer>
 </main>
+</body>
