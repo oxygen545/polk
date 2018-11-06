@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/cover" => "visitors#cover"
   get "/features" => "visitors#features"
   get "/static_pages" => "visitors#static_pages"
+  get "/dynamic_pages" => "visitors#dynamic_pages"
   get "/pricing" => "visitors#pricing"
   get "/jumbotron" => "visitors#jumbotron"
   get "/tech_stack" => "visitors#tech_stack"
