@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :visitors
+  delete "/photos/:id" => "photos#delete"
   resources :photos
   root to: "visitors#cover"
   devise_for :users

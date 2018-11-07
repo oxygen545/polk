@@ -39,6 +39,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets'
 gem 'google-cloud-storage'
 gem 'seed_dump'
+gem 'rails-ujs'
 
 group :production do
   gem 'pg'

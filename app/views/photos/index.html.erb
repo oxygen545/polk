@@ -20,7 +20,7 @@
         <td><%= photo.sequence %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to('Delete', photo, method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
       </tr>
     <% end %>
   </tbody>
