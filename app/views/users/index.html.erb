@@ -5,9 +5,10 @@
 	<p>Logged in as 
 <% if user_signed_in? %>
 	<% if admin_user_signed_in? %>
-		admin: <%=@user.email %> <%= link_to "Admin Dashboard", "/admin/", :class => "text-white" %>
+		admin: <%= @user.email %> <%= link_to "Admin Dashboard", "/admin/", :class => "text-white" %>
+ 		user:<%=@user.username %>
 	<% else %>
- 		user:<%=@user.email %>
+ 		user:<%=@user.username %>
  	<% end %>
 <% end %>
 </p>
