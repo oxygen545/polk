@@ -1,19 +1,23 @@
 
-<%= stylesheet_link_tag "shared/cyborg" %>
-<%= stylesheet_link_tag "shared/cover" %>
-<%= stylesheet_link_tag "shared/adhoc" %>
+<%= stylesheet_link_tag "cyborg" %>
+<%= stylesheet_link_tag "cover" %>
+<%= stylesheet_link_tag "adhoc" %>
 
-<% bg = Photo.find_by page_name: "cover" %>
-  <% if bg != nil %>
-  . body { 
-    background: url(<%= url_for(bg.image)%>) no-repeat center; 
+<% images = get_images 'cover'   %>
+<% image = images.find_by sequence: '1' %>
+<% if image != nil %>
+ <style>
+  body { 
+    background: url('<%= url_for(image.image)%>') no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-  background-size: 100% x 100%;
+    background-size: 100% x 100%;
   }
-  <% end %>
-</head>
+  </style>
+<% end %>
+ </head>
+
   <body class="text-center" >
   <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -21,18 +25,27 @@
       </iframe>
     </noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" >
     <main role="main" class="inner cover m-auto" >
-      <h1 class="cover-heading" text-align="center"><%= @site_title %></h1>
-      <p class="lead mt-3 mb-5"><%= @welcome_text %></p>
+      <h1 class="cover-heading" text-align="center"><%= ENV['SITE_TITLE'] %></h1>
+      <p class="lead mt-3 mb-5">Welcome to my Portfolio</p>
       <p class="lead mb-0">
-        <a href="/features" class="btn btn-lg btn-secondary">Welcome</a>
+        <a href="/features" class="btn btn-md btn-secondary">Enjoy.</a>
+          <% if admin_user_signed_in? %>
+            <a href="/admin" class="btn btn-sm btn-secondary">Admins Only</a><a href="/users" class="btn btn-sm btn-outline-secondary">Users Only</a>
+
+          <% else %>
+            <% if user_signed_in? %>
+              <a href="/users" class="btn btn-sm btn-secondary">Users Only</a>
+            <% end %>
+          <% end %>
       </p>
       <footer class="fixed-bottom text-white">
         <div class="container">
-          <p class="float-left"><%= @site_title %> &copy; 2018</p>
+          <p class="float-left"><%= ENV['SITE_TITLE'] %> &copy; 2018</p>
         </div>
       </footer>
     </main>
   </div>
-</body>
+

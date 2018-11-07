@@ -42,14 +42,6 @@ but tonight I code..
 
 ****************************************************************************%>
 
-<!-- Set your ENV VARS Here -->
-
-<% @site_title = ENV["SITE_TITLE"] %>
-<% @site_welcome = ENV['SITE_WELCOME'] %>
-<% @site_default_style = ENV["SITE_DEFAULT_STYLE"] %>
-<% @site_default_color = ENV["SITE_DEFAULT_STYLE"] %>
-<% @site_default_extra = ENV["SITE_DEFAULT_STYLE"] %>
-
 <%#***************************************************************************
 ****** Begining of the site wide header and foot attached to
 ******         every page unless over ridden
@@ -65,8 +57,27 @@ but tonight I code..
     <title><%= @site_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "bootstrap/bootstrap" %>
-    <%= stylesheet_link_tag "shared/lux" %>
+
+
+<% @site_title = ENV["SITE_TITLE"] %>
+<% if @site_default_color == nil
+    @site_default_color = "lux"
+    else %>
+    <% @site_default_color = ENV["SITE_DEFAULT_COLOR"] %>
+    <% end %>
+    <%= stylesheet_link_tag @site_default_color %>
+<% if @site_default_style == nil
+    @site_default_style = "bootstrap/bootstrap"
+    else %>
+    <% @site_default_style = ENV["SITE_DEFAULT_STYLE"] %>
+    <% end %>
+    <%= stylesheet_link_tag @site_default_style %>
+<% if @site_extra_style == nil
+    @site_extra_style = ""
+  else %>
+    <% @site_extra_style = ENV["SITE_EXTRA_STYLE"] %>
+<% end %>
+    <%= stylesheet_link_tag @site_extra_style %>
  
     <%# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -79,17 +90,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-KQGLBH7');</script>
 <!-- End Google Tag Manager -->
 <%#************************************************************************************************************************%>
-******                                       ADHOC WEB DESIGNS COVER PORTFOLIO TEMPLATE
-******
-******
+
+
 <%= yield %>
-******
-******                             NEVER CLOSE THE BODY
-******
-******
-******
 
 
+<%#************************************************************************************************************************%>
         <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
