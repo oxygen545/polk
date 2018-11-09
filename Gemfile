@@ -35,11 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'activeadmin'
-gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets'
 gem 'google-cloud-storage'
 gem 'seed_dump'
-gem 'rails-ujs'
 
 group :production do
   gem 'pg'

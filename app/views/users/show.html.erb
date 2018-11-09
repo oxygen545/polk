@@ -1,3 +1,15 @@
-</head>
-<body>
- 	<p>greetings <% user.username %> </p>
+
+<% if user_signed_in? %>
+	<% if admin_user_signed_in? %>
+		<p>Logged in as admin: <%= current_user.username %> <%= current_user.email %></p>
+	<% else %>
+ 		<p>Logged in as user:<%= current_user.username %> <%= current_user.email %></p>
+ 	<% end %>
+<% else %>
+	<% controller.redirect_to new_user_session_path %>
+<% end %>
+
+found user: <%= @user.id %> <%= @user.username %> <%= @user.email %><br>
+
+
+<%= link_to "Log out", destroy_user_session_path(current_user) %><br /> 

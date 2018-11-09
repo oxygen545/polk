@@ -1,47 +1,20 @@
-<%= stylesheet_link_tag "cyborg" %>
-<% if @user == nil %>
-	<% controller.redirect_to new_user_session_path %>
-<% end %>
-	<p>Logged in as 
 <% if user_signed_in? %>
+ 	<p> User: <%=current_user.username %> @ <%= current_user.email %></p>
 	<% if admin_user_signed_in? %>
-		admin: <%= @user.email %> <%= link_to "Admin Dashboard", "/admin/", :class => "text-white" %>
- 		user:<%=@user.username %>
-	<% else %>
- 		user:<%=@user.username %>
+		<p><%= link_to "Admin Dashboard", "/admin/" %></p>
  	<% end %>
+<% else %>
+	<% controller.redirect_to new_user_session_url %>
 <% end %>
-</p>
 
-</head>
-<body>
-<header>
-	<div class="header row" >
-		<div class="col-lg-12 mx-auto">
-			<h1>Exclusive Members Only's Area</h1>
-</header>
+<h1>Exclusive Members Only's Area</h1>
 
-<main>
-	<% if admin_user_signed_in? %>
-		<div class="row">
-			<div class="col-lg-10" >
-				<%= image_tag "https://8ch.net/static/logo_33.svg", :width =>"200px" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-10" >
-				<%= link_to "Check out 8Chan if you get bored", "https://www.8ch.net" %>
-				<%# image_tag "https://sys.8ch.net/banners.php?b=" + board_num %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-10" >
-              <a href="/photos" class="btn btn-sm btn-secondary">Photos</a>	
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-10" >
-			</div>
-		</div>
-	<% end %>
-</main>
+<% if admin_user_signed_in? %>
+	<%= image_tag "https://8ch.net/static/logo_33.svg", :width =>"200px" %>
+	<%= link_to "Check out 8Chan if you get bored", "https://www.8ch.net" %>
+	<a href="/photos" class="btn btn-sm btn-secondary">Photos</a>
+<% end %>
+<ul id="navbar">
+  <li><%= link_to_unless_current("Users", { action: "index" }) %></li>
+</ul>
+<%= link_to "Log out", { controller: "devise/sessions", action: "destroy" } %><br />
