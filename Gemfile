@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -32,45 +34,48 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activeadmin'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
-gem 'activeadmin'
-gem 'sprockets'
 gem 'google-cloud-storage'
 gem 'seed_dump'
+gem 'sprockets'
 
 group :production do
   gem 'pg'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution
+  # and get a debugger console
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+#   gem 'rspec-rails', '~> 3.8'
+%w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+  gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  # Use sqlite3 as the database for Active Record
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Access an interactive console on exception pages or
+  # by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
+  gem 'rubocop', '~> 0.60.0', require: false
+  # Spring speeds up development by keeping your application
+  # running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-#  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  #  gem 'capybara', '>= 2.15'
+
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'factory_bot_rails', '~> 4.0'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
-  gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
