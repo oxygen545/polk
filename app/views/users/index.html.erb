@@ -1,20 +1,25 @@
-<% if user_signed_in? %>
- 	<p> User: <%=current_user.username %> @ <%= current_user.email %></p>
+</head>
+<body>
+	<div class="container">
+	<% if user_signed_in? %>
+	<p> User: <%=current_user.username %> @ <%= current_user.email %></p>
 	<% if admin_user_signed_in? %>
-		<p><%= link_to "Admin Dashboard", "/admin/" %></p>
- 	<% end %>
-<% else %>
+	<p><%= link_to "Admin Dashboard", "/admin/" %></p>
+	<% end %>
+	<% else %>
 	<% controller.redirect_to new_user_session_url %>
-<% end %>
+	<% end %>
 
-<h1>Exclusive Members Only's Area</h1>
+	<h1>Exclusive Members Only's Area</h1>
 
-<% if admin_user_signed_in? %>
+	<% if admin_user_signed_in? %>
 	<%= image_tag "https://8ch.net/static/logo_33.svg", :width =>"200px" %>
 	<%= link_to "Check out 8Chan if you get bored", "https://www.8ch.net" %>
 	<a href="/photos" class="btn btn-sm btn-secondary">Photos</a>
-<% end %>
-<ul id="navbar">
-  <li><%= link_to_unless_current("Users", { action: "index" }) %></li>
-</ul>
-<%= link_to "Log out", { controller: "devise/sessions", action: "destroy" } %><br />
+	<% end %>
+	<ul id="navbar">
+	<li><%= link_to_unless_current("Users", { action: "index" }) %></li>
+	<li><%= link_to_unless_current("Home", "/") %></li>
+	<li><button class="btn-alert"><%= link_to "Log out", { controller: "devise/sessions", action: "destroy" } %></button></li>
+	</ul>
+</div>

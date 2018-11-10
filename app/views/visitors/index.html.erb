@@ -1,28 +1,34 @@
-
 <% images = get_images 'cover'   %>
 <% image = images.find_by sequence: '1' %>
+<%= stylesheet_link_tag "application" %>
 <% if image != nil %>
- <style>
-  body { 
-    background: url('<%= url_for(image.image)%>') no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100% x 100%;
-  }
+  <style>
+    body {
+      background: url('<%= url_for(image.image)%>') no-repeat center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: 100% x 100%;
+      color: coral;
+    }
   </style>
-  <% end %>
-  </head>
-<body align="center">
-<h1>Welcome to</h1>
-<h2><%= ENV['SITE_TITLE'] %></h2>
-<p>Enjoy my Portfolio</p>
-<p><%= link_to "Enjoy", "#" %></p>
 
-  <% if user_signed_in? %>
-    <a href="/users" >User Pages</a>
-  <% end %>
-<% if admin_user_signed_in? %>
-  <a href="/admin">Admin Pages</a>
 <% end %>
-<p class="float-left"><%= ENV['SITE_TITLE'] %> &copy; 2018</p>
+</head>
+<body align="center">
+  <div class="container" >
+  <h1 align="float-left">Welcome to</h1>
+  <h2 align="float-left"><%= ENV['SITE_TITLE'] %></h2>
+  <div align="left" class="bottom">
+    <p>Enjoy my Portfolio</p>
+    <p><button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "#" %></button>
+      <% if user_signed_in? %>
+        <button class="btn btn-outline-secondary ml-2"><a href="/users" >User Pages</a></button>
+      <% end %>
+      <% if admin_user_signed_in? %>
+        <button class="btn btn-outline-secondary ml-2"><a href="/admin">Admin Pages</a></button>
+      <% end %>
+    </p>
+  </div>
+    <p align="right" ><%= ENV['SITE_TITLE'] %> &copy; 2018</p>
+</div>

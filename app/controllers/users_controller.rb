@@ -6,6 +6,9 @@ class UsersController < InheritedResources::Base
 
 	end
 
+  def example
+  end
+
   def show
       @user = User.find(params[:id])
   end

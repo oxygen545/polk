@@ -1,3 +1,39 @@
 // Place all the styles related to the Visitor controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ h1,h2,h3,h4,h5,h6 {
+	font-family: 'Lobster Two', cursive;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: indianred;
+}
+
+.alert-heading {
+	font-family: 'Roboto', sans-serif;	
+}
+
+.btn-outline-primary {
+  color: coral;
+  background: transparent;
+  border-color: coral;
+}
+
+.btn-outline-primary.focus {
+  background: transparent;
+  border-color: coral;
+  box-shadow: 0 0 0 0.2rem rgba(123,32,32,.25);
+}
+
+.btn-outline-primary:hover {
+  background: transparent;
+  border-color: tomato;
+  color: tomato;
+}
+
+
+a {
+  color: tomato;
+}

@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   resources :visitors
   resources :photos
   root to: "visitors#index"
+  resources :users
   
   devise_for :users
-  resources :users
-  get "/users" => "users#index"
+  get "/example" => "users#example"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
