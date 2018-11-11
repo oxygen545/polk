@@ -1,0 +1,30 @@
+</head>
+<body>
+  <div class="nav nav-bar fixed-top">
+    <%= link_to "Home","/", :class => "btn btn-primary" %>
+  </div>
+  <div class="flex-container">
+    <div class="card">
+      <% if @item.photo_id != nil %>
+        <%= image_tag Photo.find(@item.photo_id).image, :class => "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @item.title %><br>
+          <smaller class=text-muted">by: <%= @item.user_id %></smaller>
+        </h5>
+        <p class="card-text">
+          <strong><%= @item.heading %></strong><br>
+          <%= raw(@item.body) %>
+        </p>
+        <% if user_signed_in? %>
+         <%= link_to 'Edit', edit_item_path(@item) %> <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+         <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="nav nav-bar fixed-bottom" >
+    <% if user_signed_in? %>
+      <%= link_to 'New Item', new_item_path, :class => "btn btn-primary" %>
+    <% end %>
+  </div>
+  <%= link_to 'Back', items_path %>

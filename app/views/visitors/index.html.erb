@@ -22,7 +22,7 @@
     <main role="main" class="inner cover m-auto" >
       <div align="center">
         <h5 class="lead">..Enjoy my Portfolio..</h5>
-        <button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "#" %></button>
+        <button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "/items" %></button>
         <% if user_signed_in? %>
           <button class="btn btn-outline-secondary ml-2"><a href="/users" >User Pages</a></button>
         <% end %>
@@ -31,4 +31,4 @@
         <% end %>
       </div>
     </main>
-    <div class="bd-highlight" align="right"><%= ENV['SITE_TITLE'] %> &copy; 2018</div>
+    <div class="bd-highlight fixed-bottom" align="right"><%= ENV['SITE_TITLE'] %> &copy; 2018</div>

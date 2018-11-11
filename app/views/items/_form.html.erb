@@ -1,0 +1,44 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% users_array = User.all.map { |user| [user.username, user.id] } %>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select "user_id", options_for_select(users_array) , :name => "item[user_id]" %>
+  </div>
+
+  <div class="field">
+  <% photos_array = Photo.all.map { |photo| [photo.caption, photo.id] } %>
+  <%= form.label :photo_id %>
+  <%= form.select "photo_id", options_for_select(photos_array) , :name =>"item[photo_id]" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :heading %>
+    <%= form.text_field :heading %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

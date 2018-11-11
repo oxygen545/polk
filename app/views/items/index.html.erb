@@ -1,0 +1,44 @@
+</head>
+<body>
+  <div class="nav nav-bar my-2">
+    <%= link_to "Home","/", :class => "btn btn-sm btn-secondary" %>
+  </div>
+  <div class="container flex-container">
+    <div class="col flex-col-3">
+      <% @items.each do |item| %>
+        <% if item.photo_id != nil %>
+          <style type="text/css">
+            .bgimg {
+              background-image: url('<%= url_for(Photo.find(item.photo_id).image) %>');
+              background-size: 320px;
+              background-repeat: no-repeat;
+              background-origin: center;
+            }
+          </style>
+        <% end %>
+        <% user_name = User.find(item.user_id).username %>
+        <div class="card bgimg">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %><br>
+              <smaller class=text-muted">by: <%= user_name %></smaller>
+            </h5>
+            <div class="card-text">
+              <p>
+                <%= item.heading %><br>
+                <smaller><%= item.body.slice(0..20) %></smaller>
+              </p>
+              <p><%= link_to '>>', item , :class => "btn btn-sm btn-outline-primary" %></p>
+              <% if user_signed_in? %>
+               <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-primary my-2" %>
+               <%= link_to 'Destroy', item, :class =>"btn btn-sm btn-outline-primary my-2", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="nav nav-bar my-2" >
+  <% if user_signed_in? %>
+    <%= link_to 'New Item', new_item_path, :class => "btn btn-primary" %>
+  <% end %>
+  </div>

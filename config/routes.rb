@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   resources :visitors
   resources :photos
   root to: "visitors#index"
