@@ -10,25 +10,30 @@
       -o-background-size: cover;
       background-size: 100% x 100%;
       color: coral;
+      min-height: 320px;
+      min-width:320px;
     }
   </style>
 
 <% end %>
 </head>
 <body align="center">
-  <div class="container" >
-  <h1 align="float-left">Welcome to</h1>
-  <h2 align="float-left"><%= ENV['SITE_TITLE'] %></h2>
-  <div align="left" class="bottom">
-    <p>Enjoy my Portfolio</p>
-    <p><button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "#" %></button>
-      <% if user_signed_in? %>
-        <button class="btn btn-outline-secondary ml-2"><a href="/users" >User Pages</a></button>
-      <% end %>
-      <% if admin_user_signed_in? %>
-        <button class="btn btn-outline-secondary ml-2"><a href="/admin">Admin Pages</a></button>
-      <% end %>
-    </p>
+  <div class="container-fluid" >
+    <div class="row">
+      <div class="col-4 mt-0">
+        <h1>Welcome to</h1>
+        <h2><%= ENV['SITE_TITLE'] %></h2>
+      </div>
+      <div class="col-6 m-auto">
+        <h3>Enjoy my Portfolio</h3>
+        <button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "#" %></button>
+          <% if user_signed_in? %>
+            <button class="btn btn-outline-secondary ml-2"><a href="/users" >User Pages</a></button>
+          <% end %>
+          <% if admin_user_signed_in? %>
+            <button class="btn btn-outline-secondary ml-2"><a href="/admin">Admin Pages</a></button>
+          <% end %>
+      </div>
+      <div class="col-2 mb-0"><%= ENV['SITE_TITLE'] %> &copy; 2018</div>
+    </div>
   </div>
-    <p align="right" ><%= ENV['SITE_TITLE'] %> &copy; 2018</p>
-</div>
