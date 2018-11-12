@@ -1,0 +1,57 @@
+<%= form_with(model: style, local: true) do |form| %>
+  <% if style.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(style.errors.count, "error") %> prohibited this style from being saved:</h2>
+
+      <ul>
+      <% style.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :stylename %>
+    <%= form.text_field :stylename %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :primary_font %>
+    <%= form.text_field :primary_font %>
+  </div>
+
+  <div class="field">
+    <%= form.label :secondary_font %>
+    <%= form.text_field :secondary_font %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alt_font %>
+    <%= form.text_field :alt_font %>
+  </div>
+
+  <div class="field">
+    <%= form.label :primary_color %>
+    <%= form.text_field :primary_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :secondary_color %>
+    <%= form.text_field :secondary_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alt_color %>
+    <%= form.text_field :alt_color %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stylename:</strong>
+  <%= @style.stylename %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @style.description %>
+</p>
+
+<p>
+  <strong>Primary font:</strong>
+  <%= @style.primary_font %>
+</p>
+
+<p>
+  <strong>Secondary font:</strong>
+  <%= @style.secondary_font %>
+</p>
+
+<p>
+  <strong>Alt font:</strong>
+  <%= @style.alt_font %>
+</p>
+
+<p>
+
+<p>
+  <strong>Primary color:</strong>
+  <%= @style.primary_color %>
+</p>
+
+<p>
+  <strong>Secondary color:</strong>
+  <%= @style.secondary_color %>
+</p>
+
+<p>
+  <strong>Alt color:</strong>
+  <%= @style.alt_color %>
+</p>
+
+<style type="text/css">
+  .pf {
+   font-family :<%= @style.primary_font %>; 
+  }
+  .sf {
+   font-family :<%= @style.secondary_font %>; 
+  }
+  .af {
+   font-family :<%= @style.alt_font %>; 
+  }
+  .pc {
+   color: <%= @style.primary_color %>;
+  }
+  .sc {
+   color: <%= @style.secondary_color %>;
+  }
+  .ac {
+   color: <%= @style.alt_color %>;
+  }
+ p class=".pf .pc">default color and default font</p>
+<p class=".sf .sc">primary color and secondary font</p>
+<p class=".af .ac">alt primary color and alt font</p>
+<%= link_to 'Edit', edit_style_path(@style) %> |
+<%= link_to 'Back', styles_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Styles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stylename</th>
+      <th>Description</th>
+      <th>Primary font</th>
+      <th>Secondary font</th>
+      <th>Alt font</th>
+      <th>Primary color</th>
+      <th>Secondary color</th>
+      <th>Alt color</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @styles.each do |style| %>
+      <tr>
+        <td><%= style.stylename %></td>
+        <td><%= style.description %></td>
+        <td><%= style.primary_font %></td>
+        <td><%= style.secondary_font %></td>
+        <td><%= style.alt_font %></td>
+        <td><%= style.primary_color %></td>
+        <td><%= style.secondary_color %></td>
+        <td><%= style.alt_color %></td>
+        <td><%= link_to 'Show', style %></td>
+        <td><%= link_to 'Edit', edit_style_path(tyle) %></td>
+        <td><%= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Style', new_style_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_171349) do
+ActiveRecord::Schema.define(version: 2018_11_12_022541) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,14 +60,16 @@ ActiveRecord::Schema.define(version: 2018_11_11_171349) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "photo_id"
     t.string "title"
     t.string "heading"
     t.text "body"
+    t.integer "style_id"
+    t.integer "user_id"
+    t.integer "photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["photo_id"], name: "index_items_on_photo_id"
+    t.index ["style_id"], name: "index_items_on_style_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -75,6 +77,19 @@ ActiveRecord::Schema.define(version: 2018_11_11_171349) do
     t.string "page_name"
     t.string "caption"
     t.integer "sequence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string "stylename"
+    t.string "description"
+    t.string "primary_font"
+    t.string "secondary_font"
+    t.string "alt_font"
+    t.string "primary_color"
+    t.string "secondary_color"
+    t.string "alt_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,10 @@
+class Style < ApplicationRecord
+validates_presence_of :stylename
+validates_presence_of :description
+validates_presence_of :primary_font
+validates_presence_of :secondary_font
+validates_presence_of :alt_font
+validates_presence_of :primary_color
+validates_presence_of :secondary_color
+validates_presence_of :alt_color
+end
