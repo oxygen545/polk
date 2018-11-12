@@ -1,5 +1,9 @@
 class StylesController < InheritedResources::Base
 
+	def show
+		@style = Style.find(params[:id])
+	end
+
   private
 
     def style_params

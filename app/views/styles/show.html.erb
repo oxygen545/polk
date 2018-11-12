@@ -1,46 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Stylename:</strong>
-  <%= @style.stylename %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @style.description %>
-</p>
-
-<p>
-  <strong>Primary font:</strong>
-  <%= @style.primary_font %>
-</p>
-
-<p>
-  <strong>Secondary font:</strong>
-  <%= @style.secondary_font %>
-</p>
-
-<p>
-  <strong>Alt font:</strong>
-  <%= @style.alt_font %>
-</p>
-
-<p>
-
-<p>
-  <strong>Primary color:</strong>
-  <%= @style.primary_color %>
-</p>
-
-<p>
-  <strong>Secondary color:</strong>
-  <%= @style.secondary_color %>
-</p>
-
-<p>
-  <strong>Alt color:</strong>
-  <%= @style.alt_color %>
-</p>
 
 <style type="text/css">
   .pf {
@@ -61,10 +18,30 @@
   .ac {
    color: <%= @style.alt_color %>;
   }
+  .bg {
+   background-color: <%= @style.alt_color %>;
+  }
 
 </style>
-<p class="pf pc">default color and default font</p>
-<p class="sf sc">primary color and secondary font</p>
-<p class="af ac">alt primary color and alt font</p>
-<%= link_to 'Edit', edit_style_path(@style) %> |
-<%= link_to 'Back', styles_path %>
+</head>
+<body>
+<p id="notice"><%= notice %></p>
+<div class="container flex-container">
+  <div class="card flex-card">
+    <div class="card-body">
+      <div class="card-title bg">
+        <h2 class="pf pc"><%= @style.stylename %></h2>
+        <h5 class="sf pc"><%= @style.description %></h5>
+      </div>
+      <div class="card-text">
+        <p class="pf pc">pf:<%= @style.primary_font %> pc:<%= @style.primary_color %></p>
+        <p class="sf sc">sf:<%= @style.secondary_font %> sc:<%= @style.secondary_color %></p>
+        <p class="af ac">af:<%= @style.alt_font %> ac:<%= @style.alt_color %></p>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="nav nav-bar">
+<%= link_to 'Edit', edit_style_path(@style), :class =>"nav-link" %> |
+<%= link_to 'Back', styles_path, :class =>"nav-link" %>
+</div>

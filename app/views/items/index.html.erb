@@ -1,52 +1,69 @@
   </head>
+  <body>
 <p id="notice"><%= notice %></p>
-<div class="container flex-container">
+<div class="container flex-container" align="center">
   <% i = 0 %>
   <% @items.each do |item| %>
     <% i=i+1 %>
-      <% if item.style_id != nil %>
-        <% @style = Style.find(item.style_id) %>
-        <style type="text/css">
-        .pf_<%= i %> {
-         font-family :<%= @style.primary_font %>; 
+    <% if item.style_id != nil %>
+      <% @style = Style.find(item.style_id) %>
+      <style type="text/css">
+      .pf_<%= i %> {
+       font-family :<%= @style.primary_font %>; 
+      }
+      .sf_<%= i %> {
+       font-family :<%= @style.secondary_font %>; 
+      }
+      .af_<%= i %> {
+       font-family :<%= @style.alt_font %>; 
+      }
+      .pc_<%= i %> {
+       color: <%= @style.primary_color %>;
+      }
+      .sc_<%= i %> {
+       color: <%= @style.secondary_color %>;
+      }
+      .ac_<%= i %> {
+       color: <%= @style.alt_color %>;
+      }
+      <% if item.photo_id != nil %>
+        .bgimg_<%= i %> {
+        background-image: url('<%= url_for(Photo.find(item.photo_id).image) %>');
+        background-repeat: no-repeat;
+        background-size: 100%;
         }
-        .sf_<%= i %> {
-         font-family :<%= @style.secondary_font %>; 
-        }
-        .af_<%= i %> {
-         font-family :<%= @style.alt_font %>; 
-        }
-        .pc_<%= i %> {
-         color: <%= @style.primary_color %>;
-        }
-        .sc_<%= i %> {
-         color: <%= @style.secondary_color %>;
-        }
-        .ac_<%= i %> {
-         color: <%= @style.alt_color %>;
-        }
-        <% if item.photo_id != nil %>
-          .bgimg_<%= i %> {
-          background-image: url('<%= url_for(Photo.find(item.photo_id).image) %>');
-          background-repeat: no-repeat;
-          background-size: 320px;
-          }
-        <% end %>
-        </style>
       <% end %>
-      <div class="card">
-        <div class="card-body bgimg_<%= i %>" >
-          <div class="card-title"><h5 class="pf_<%= i %> pc_<%= i %>"><%= item.title %></h5><h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6></div>
-          <div class="card-text af_<%= i %> ac_<%= i %>"><%= raw(item.body) %></div>
+        .bg_<%= i %> {
+        background: <%= @style.alt_color %>;
+        }
+      </style>
+    <% end %>
+    <%# raw(controller.get_style item) %>
+    <div class="card m-auto h-100 bgimg_<%= i %>" style="width: 75%;">
+      <div class="card-body mt-5 bglight" style="width:50%;" >
+        <div class="card-title pf_<%= i %> pc_<%= i %>"><h5><%= item.title %></h5></div>
+        <div class="card-subtitle sc_<%= i %> sf_<%= i %>" >
+            <h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6> by <h6><%= User.find(item.user_id).username %></h6>
         </div>
-        <div class="nav">
-          <%= link_to Style.find(item.style_id).stylename, edit_style_path(item.style_id), :class => "btn btn-sm btn-warning" %>
-          <%= link_to User.find(item.user_id).username, edit_user_path(item.user_id), :class => "btn btn-sm btn-info" %>
-          <%= link_to 'Show', item , :class =>"btn btn-sm btn-success" %>
-          <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-warning"  %>
-          <%= link_to 'Destroy', item, :class =>"btn btn-sm btn-danger" ,method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
+      <div class="card-text af_<%= i %> ac_<%= i %> bglight" style="width:50%;"><%= raw(item.body).slice(0..40) %><%= link_to "...", item %><br><br></div>
+      <div class="bglight" style="width:50%;">
+        <%= link_to 'Show', item , :class =>"btn btn-sm btn-success" %>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-outline-warning"  %>
+          <%= link_to 'Delete', item, :class =>"btn btn-sm btn-outline-danger" ,method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% else %>
+            <%= link_to "Show Style", style_path(item.style_id), :class => "btn btn-sm btn-outline-info" %>
+        <% end %>
+        <br><br>
+      </div>
+      <br><br>
+    </div>
   <% end %>
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+</div>
+<% if user_signed_in? %>
+<div class="nav-bar fixed-bottom">
+  <% copyrt = "&copy;" %>
+  <p style="text-align: center;"><%= link_to 'New Item', new_item_path , :class=>"btn btn-sm btn-info"%> <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn btn-sm btn-info"%></p>
+</div>
+<% end %>

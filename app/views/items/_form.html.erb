@@ -22,27 +22,52 @@
   </div>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body , :size => "40x10"%>
   </div>
 
   <div class="field">
     <%= form.label :style_id %>
-
-  <% styles_array = Style.all.map { |style| [style.stylename, style.id] } %>
-  <%= select_tag "item_style_id", options_for_select(styles_array), :name => "item[style_id]" %>
+  <select name="item[style_id]" id="item_style_id">
+  <% Style.find_each do |style| %>
+    <% if item.style_id == style.id %>
+      <option value="<%= style.id %>" selected="selected"><%= style.stylename %></option>
+    <% else %>
+        <option value="<%= style.id %>" ><%= style.stylename %></option>
+    <% end %>
+  <% end %>
+  </select>
+  <% if item.style_id != nil %>
+    <%= link_to "Edit Style", edit_style_path(item.style_id), :class => "btn btn-sm btn-warning" %>
+  <% end %>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <% users_array = User.all.map { |user| [user.username, user.id] } %>
-    <%= select_tag "item_user_id", options_for_select(users_array), :name => "item[user_id]" %>
+  <select name="item[user_id]" id="item_user_id">
+  <% User.find_each do |user| %>
+    <% if item.user_id == user.id %>
+      <option value="<%= user.id %>" selected="selected"><%= user.username %></option>
+    <% else %>
+        <option value="<%= user.id %>" ><%= user.username %></option>
+    <% end %>
+  <% end %>
+  </select>
   </div>
 
   <div class="field">
     <%= form.label :photo_id %>
-   <% photos_array = Photo.all.map { |photo| [photo.caption, photo.id] } %>
-    <%= select_tag "item_photo_id", options_for_select(photos_array), :name => "item[photo_id]" %>
+  <select name="item[photo_id]" id="item_photo_id">
+  <% Photo.find_each do |photo| %>
+    <% if item.photo_id == photo.id %>
+      <option value="<%= photo.id %>" selected="selected"><%= photo.caption %></option>
+    <% else %>
+        <option value="<%= photo.id %>" ><%= photo.caption %></option>
+    <% end %>
+  <% end %>
+  </select>
+  <% if item.photo_id != nil %>
+  <%= link_to "Edit Photo", edit_photo_path(item.photo_id), :class => "btn btn-sm btn-warning" %>
+  <% end %>
    </div>
 
   <div class="actions">

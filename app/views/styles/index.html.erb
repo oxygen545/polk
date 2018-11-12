@@ -1,41 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Styles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Stylename</th>
-      <th>Description</th>
-      <th>Primary font</th>
-      <th>Secondary font</th>
-      <th>Alt font</th>
-      <th>Primary color</th>
-      <th>Secondary color</th>
-      <th>Alt color</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+</head>
+<body>
+  <p id="notice"><%= notice %></p>
+  <div class="cover-container">
+    <div class="nav nav-bar">
+      <h1>Styles</h1>
+    </div>
     <% @styles.each do |style| %>
-      <tr>
-        <td><%= style.stylename %></td>
-        <td><%= style.description %></td>
-        <td><%= style.primary_font %></td>
-        <td><%= style.secondary_font %></td>
-        <td><%= style.alt_font %></td>
-        <td><%= style.primary_color %></td>
-        <td><%= style.secondary_color %></td>
-        <td><%= style.alt_color %></td>
-        <td><%= link_to 'Show', style %></td>
-        <td><%= link_to 'Edit', edit_style_path(style) %></td>
-        <td><%= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <style type="text/css">
+        .pf_<%= style.id %> {
+        font-family :<%= style.primary_font %>; 
+        }
+        .sf_<%= style.id %> {
+        font-family :<%= style.secondary_font %>; 
+        }
+        .af_<%= style.id %> {
+        font-family :<%= style.alt_font %>; 
+        }
+        .pc_<%= style.id %> {
+        color: <%= style.primary_color %>;
+        }
+        .sc_<%= style.id %> {
+        color: <%= style.secondary_color %>;
+        }
+        .ac_<%= style.id %> {
+        color: <%= style.alt_color %>;
+        }
+        .bg_<%= style.id %> {
+        background-color: <%= style.alt_color %>;
+        }
+      </style>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title bg_<%= style.id %>">
+            <p class="pf_<%= style.id %> pc_<%= style.id %>"><%= style.stylename %></p>
+            <p class="sf_<%= style.id %> pc_<%= style.id %>"><%= style.description %></p>
+          </div>
+          <div class="card-text">
+            <ul>
+              <li class="pf_<%= style.id %> pc_<%= style.id %>"><%= style.primary_font %></li>
+              <li class="sf_<%= style.id %> pc_<%= style.id %>"><%= style.secondary_font %></li>
+              <li class="af_<%= style.id %> pc_<%= style.id %>"><%= style.alt_font %></li>
+              <li class="pf_<%= style.id %> pc_<%= style.id %>"><%= style.primary_color %></li>
+              <li class="sf_<%= style.id %> sc_<%= style.id %>"><%= style.secondary_color %></li>
+              <li class="af_<%= style.id %> ac_<%= style.id %>"><%= style.alt_color %></li>
+              <li><%= link_to 'Show', style %></li>
+              <li><%= link_to 'Edit', edit_style_path(style) %></li>
+              <li><%= link_to 'Destroy', style, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Style', new_style_path %>
+  </div>
+  <%= link_to 'New Style', new_style_path %>
