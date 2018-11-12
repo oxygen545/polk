@@ -26,18 +26,18 @@
          color: <%= @style.alt_color %>;
         }
         <% if item.photo_id != nil %>
-        .bgimg_<%= i %> {
+          .bgimg_<%= i %> {
           background-image: url('<%= url_for(Photo.find(item.photo_id).image) %>');
           background-repeat: no-repeat;
-          background-size: 640px;
-        }
+          background-size: 320px;
+          }
         <% end %>
         </style>
       <% end %>
       <div class="card">
         <div class="card-body bgimg_<%= i %>" >
-          <div class="card-title"><h5 class="sf_<%= i %> pc_<%= i %>"><%= item.title %></h5><h6 class="sf_<%= i %> pc_<%= i %>"><%= item.heading %></h6></div>
-          <div class="card-text pf_<%= i %> ac_<%= i %>"><%= raw(item.body) %></div>
+          <div class="card-title"><h5 class="pf_<%= i %> pc_<%= i %>"><%= item.title %></h5><h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6></div>
+          <div class="card-text af_<%= i %> ac_<%= i %>"><%= raw(item.body) %></div>
         </div>
         <div class="nav">
           <%= link_to Style.find(item.style_id).stylename, edit_style_path(item.style_id), :class => "btn btn-sm btn-warning" %>
@@ -46,7 +46,7 @@
           <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-warning"  %>
           <%= link_to 'Destroy', item, :class =>"btn btn-sm btn-danger" ,method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
-    <% end %>
+  <% end %>
 <br>
 
 <%= link_to 'New Item', new_item_path %>

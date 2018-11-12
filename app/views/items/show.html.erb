@@ -26,7 +26,6 @@
     background-repeat: no-repeat;
     background-size: 640px;
   }
-
   <% end %>
   </style>
 <% end %>
@@ -35,11 +34,15 @@
   <div class="container flex-container">
     <div class="card bgimg">
       <div class="card-body">
-        <div class="card-title"><h2><div class="sf ac" ><%= @item.title %></div><div class="sf sc"> by: </div><div class="sf ac"><%= User.find(@item.user_id).username %></div>
-        </h2></div>
-        <div class="card-text sf pc">
-          <h2 class="sf pc"><%= @item.heading %></h2>
-          <p class="af pc"><%= raw(@item.body) %></p>
+        <div class="card-title">
+          <h2><div class="pf pc" ><%= @item.title %></div>
+            <div class="sf pc"> by: </div>
+            <div class="pf pc"><%= User.find(@item.user_id).username %></div>
+          </h2>
+        </div>
+        <div class="card-text">
+          <h2 class="pf sc"><%= @item.heading %></h2>
+          <p class="sf pc"><%= raw(@item.body) %></p>
         </div>
       </div>
     </div>
