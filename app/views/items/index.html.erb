@@ -1,37 +1,52 @@
+  </head>
 <p id="notice"><%= notice %></p>
-
-<h1>Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Heading</th>
-      <th>Body</th>
-      <th>Item style</th>
-      <th>User</th>
-      <th>Photo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.heading %></td>
-        <td><%= item.body %></td>
-        <td><%= item.style %></td>
-        <td><%= item.user %></td>
-        <td><%= item.photo %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container flex-container">
+  <% i = 0 %>
+  <% @items.each do |item| %>
+    <% i=i+1 %>
+      <% if item.style_id != nil %>
+        <% @style = Style.find(item.style_id) %>
+        <style type="text/css">
+        .pf_<%= i %> {
+         font-family :<%= @style.primary_font %>; 
+        }
+        .sf_<%= i %> {
+         font-family :<%= @style.secondary_font %>; 
+        }
+        .af_<%= i %> {
+         font-family :<%= @style.alt_font %>; 
+        }
+        .pc_<%= i %> {
+         color: <%= @style.primary_color %>;
+        }
+        .sc_<%= i %> {
+         color: <%= @style.secondary_color %>;
+        }
+        .ac_<%= i %> {
+         color: <%= @style.alt_color %>;
+        }
+        <% if item.photo_id != nil %>
+        .bgimg_<%= i %> {
+          background-image: url('<%= url_for(Photo.find(item.photo_id).image) %>');
+          background-repeat: no-repeat;
+          background-size: 640px;
+        }
+        <% end %>
+        </style>
+      <% end %>
+      <div class="card">
+        <div class="card-body bgimg_<%= i %>" >
+          <div class="card-title"><h5 class="sf_<%= i %> pc_<%= i %>"><%= item.title %></h5><h6 class="sf_<%= i %> pc_<%= i %>"><%= item.heading %></h6></div>
+          <div class="card-text pf_<%= i %> ac_<%= i %>"><%= raw(item.body) %></div>
+        </div>
+        <div class="nav">
+          <%= link_to Style.find(item.style_id).stylename, edit_style_path(item.style_id), :class => "btn btn-sm btn-warning" %>
+          <%= link_to User.find(item.user_id).username, edit_user_path(item.user_id), :class => "btn btn-sm btn-info" %>
+          <%= link_to 'Show', item , :class =>"btn btn-sm btn-success" %>
+          <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-warning"  %>
+          <%= link_to 'Destroy', item, :class =>"btn btn-sm btn-danger" ,method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
 <br>
 
 <%= link_to 'New Item', new_item_path %>

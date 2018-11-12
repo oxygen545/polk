@@ -1,34 +1,50 @@
 <p id="notice"><%= notice %></p>
+<% if @item.style_id != nil %>
+  <% @style = Style.find(@item.style_id) %>
+  <style type="text/css">
+  .pf {
+   font-family :<%= @style.primary_font %>; 
+  }
+  .sf {
+   font-family :<%= @style.secondary_font %>; 
+  }
+  .af {
+   font-family :<%= @style.alt_font %>; 
+  }
+  .pc {
+   color: <%= @style.primary_color %>;
+  }
+  .sc {
+   color: <%= @style.secondary_color %>;
+  }
+  .ac {
+   color: <%= @style.alt_color %>;
+  }
+  <% if @item.photo_id != nil %>
+  .bgimg {
+    background-image: url('<%= url_for(Photo.find(@item.photo_id).image) %>');
+    background-repeat: no-repeat;
+    background-size: 640px;
+  }
 
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
-
-<p>
-  <strong>Heading:</strong>
-  <%= @item.heading %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @item.body %>
-</p>
-
-<p>
-  <strong>style:</strong>
-  <%= @item.style_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @item.user %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @item.photo_id %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+  <% end %>
+  </style>
+<% end %>
+</head>
+<body>
+  <div class="container flex-container">
+    <div class="card bgimg">
+      <div class="card-body">
+        <div class="card-title"><h2><div class="sf ac" ><%= @item.title %></div><div class="sf sc"> by: </div><div class="sf ac"><%= User.find(@item.user_id).username %></div>
+        </h2></div>
+        <div class="card-text sf pc">
+          <h2 class="sf pc"><%= @item.heading %></h2>
+          <p class="af pc"><%= raw(@item.body) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="nav nav-bar">
+  <%= link_to 'Edit', edit_item_path(@item) %> |
+  <%= link_to 'Back', items_path %>
+</div>
