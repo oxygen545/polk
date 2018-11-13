@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   
   get "/example" => "users#example"
+  get "/features" => "visitors#features"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

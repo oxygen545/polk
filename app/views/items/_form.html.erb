@@ -36,8 +36,9 @@
     <% end %>
   <% end %>
   </select>
+    <%= link_to "New Style", new_style_path, :class => "btn btn-sm btn-outline-info" %>
   <% if item.style_id != nil %>
-    <%= link_to "Edit Style", edit_style_path(item.style_id), :class => "btn btn-sm btn-warning" %>
+    <%= link_to "Edit Style", edit_admin_style_path(item.style_id), :class => "btn btn-sm btn-outline-warning" %>
   <% end %>
   </div>
 
@@ -65,8 +66,9 @@
     <% end %>
   <% end %>
   </select>
+  <%= link_to "New Photo", new_photo_path, :class => "btn btn-sm btn-outline-info" %>
   <% if item.photo_id != nil %>
-  <%= link_to "Edit Photo", edit_photo_path(item.photo_id), :class => "btn btn-sm btn-warning" %>
+  <%= link_to "Edit Photo", edit_photo_path(item.photo_id), :class => "btn btn-sm btn-outline-warning" %>
   <% end %>
    </div>
 

@@ -1,33 +1,35 @@
-<% images = get_images 'cover'   %>
-<% image = images.find_by sequence: '1' %>
-<%= stylesheet_link_tag "application" %>
-<% if image != nil %>
-  <style>
-    body {
-      background: url('<%= url_for(image.image)%>') no-repeat center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: 100% x 100%;
-    }
-  </style>
-<% end %>
+<%= raw(get_style Item.take) %>
+
 </head>
-  <body class="text-center" >
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column" >
-      <h1 class="cover-heading" align="left">Welcome to</h1>
-      <h3 align="left"><%= ENV['SITE_TITLE'] %></h3>
-    </div>
-    <main role="main" class="inner cover m-auto" >
-      <div align="center">
-        <h5 class="lead">..Enjoy my Portfolio..</h5>
-        <button class="btn btn-outline-primary focus"><%= link_to "Enjoy", "/items" %></button>
-        <% if user_signed_in? %>
-          <button class="btn btn-outline-secondary ml-2"><a href="/users" >User Pages</a></button>
-        <% end %>
-        <% if admin_user_signed_in? %>
-          <button class="btn btn-outline-secondary ml-2"><a href="/admin">Admin Pages</a></button>
-        <% end %>
+  <body class="text-center bgcover">
+    <p id="notice"><%= notice %></p>
+    <main role="main" class="cover-container d-flex h-100 p-3 m-auto flex-column" >
+      <div class="cover-container inner cover center">
+        <div class="card bglight" style="width: 80%; padding-bottom: 4rem;">
+          <h3 class="card-title pf pc mt-5 mb-3" align="center">
+            Welcome <smaller>to </smaller>
+          </h3>
+          <h1 class="sc"><%= ENV['SITE_TITLE'] %></h1>
+          <div class="card-body">
+            <h1 class="sf sc card-subtitle mt-5">Enjoy</h1>
+            <div class="card-footer">
+              <%= link_to "Enjoy", "/items", :class => "btn btn-outline-primary focus" %>
+              <% if user_signed_in? %>
+                <%= link_to "User Pages", "/users", :class => "btn btn-outline-secondary ml-2" %>
+              <% end %>
+              <% if admin_user_signed_in? %>
+                <%= link_to "Admin Pages", "/admin", :class => "btn btn-outline-secondary ml-2" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
-    <div class="bd-highlight fixed-bottom" align="right"><%= ENV['SITE_TITLE'] %> &copy; 2018</div>
+<% if user_signed_in? %>
+<div class="fixed-bottom bglight center" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
+  <% copyrt = "&copy;" %>
+  <p style="text-align: center;">
+    <%= link_to 'New Item', new_item_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
+    <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn bgdark btn-sm btn-outline-info"%></p>
+</div>
+<% end %>

@@ -1,9 +1,10 @@
-  </head>
-  <body>
+<%= raw(get_style Item.take) %>
+</head>
+<body>
 <p id="notice"><%= notice %></p>
 <div class="container flex-container" align="center">
   <% i = 0 %>
-  <% @items.each do |item| %>
+<% @items.each do |item| %>
     <% i=i+1 %>
     <% if item.style_id != nil %>
       <% @style = Style.find(item.style_id) %>
@@ -38,32 +39,33 @@
         }
       </style>
     <% end %>
-    <%# raw(controller.get_style item) %>
-    <div class="card m-auto h-100 bgimg_<%= i %>" style="width: 75%;">
-      <div class="card-body mt-5 bglight" style="width:50%;" >
-        <div class="card-title pf_<%= i %> pc_<%= i %>"><h5><%= item.title %></h5></div>
-        <div class="card-subtitle sc_<%= i %> sf_<%= i %>" >
-            <h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6> by <h6><%= User.find(item.user_id).username %></h6>
-        </div>
+  <div class="card m-auto h-100 bgimg_<%= i %>" style="width: 90%; padding-top:3rem; padding-bottom: 4rem;">
+    <div class="card-body bgmed" style="width:90%;" >
+      <div class="card-title pf_<%= i %> pc_<%= i %>"><h5><%= item.title %></h5></div>
+      <div class="card-subtitle sc_<%= i %> sf_<%= i %>" >
+        <h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6> by <h6><%= User.find(item.user_id).username %></h6>
       </div>
-      <div class="card-text af_<%= i %> ac_<%= i %> bglight" style="width:50%;"><%= raw(item.body).slice(0..40) %><%= link_to "...", item %><br><br></div>
-      <div class="bglight" style="width:50%;">
-        <%= link_to 'Show', item , :class =>"btn btn-sm btn-success" %>
+      <div class="card-text af_<%= i %> ac_<%= i %>" style="width:50%;"><%= item.body.slice(0..199) %><%= link_to "...more", item %><br><br>
+      </div>
+      <div class="card-footer bgclear af_<%= i %> ac_<%= i %>" style="width:50%; padding-top: 1rem;">
+        <%= link_to 'Show', item , :class =>"bgdark btn btn-sm btn-outline-success" %>
         <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_item_path(item), :class =>"btn btn-sm btn-outline-warning"  %>
-          <%= link_to 'Delete', item, :class =>"btn btn-sm btn-outline-danger" ,method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% else %>
-            <%= link_to "Show Style", style_path(item.style_id), :class => "btn btn-sm btn-outline-info" %>
+          <%= link_to 'Edit', edit_item_path(item), :class =>"bgdark btn btn-sm btn-outline-warning"  %>
+          <%= link_to 'Delete', item, :class =>"btn bgdark btn-sm btn-outline-danger" ,method: :delete, data: { confirm: '  Are you sure?' } %>
         <% end %>
-        <br><br>
       </div>
-      <br><br>
     </div>
-  <% end %>
+  </div>
+<% end %>
 </div>
 <% if user_signed_in? %>
-<div class="nav-bar fixed-bottom">
+<div class="fixed-bottom bgmed center" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
   <% copyrt = "&copy;" %>
-  <p style="text-align: center;"><%= link_to 'New Item', new_item_path , :class=>"btn btn-sm btn-info"%> <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn btn-sm btn-info"%></p>
+  <p style="text-align: center;">
+    <%= link_to 'New Photo', new_photo_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
+    <%= link_to 'New Style', new_admin_style_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
+    <%= link_to 'New Item', new_item_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
+    <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn bgdark btn-sm btn-outline-success"%></p>
 </div>
 <% end %>
+
