@@ -1,6 +1,6 @@
 <%= raw(get_style Item.take) %>
 <style type="text/css">
-body{background:black;padding-top:3rem;padding-bottom:3rem;color:#5a5a5a}.carousel{margin-bottom:4rem}.carousel-caption{bottom:3rem;z-index:10}.carousel-item{height:32rem;background-color:#777}.carousel-item>img{position:absolute;top:0;left:0;min-width:100%;height:32rem}.marketing .col-lg-4{margin-bottom:1.5rem;text-align:center}.marketing h2{font-weight:400}.marketing .col-lg-4 p{margin-right:.75rem;margin-left:.75rem}.featurette-divider{margin:5rem 0}.featurette-heading{font-weight:300;line-height:1;letter-spacing:-.05rem}@media (min-width: 40em){.carousel-caption p{margin-bottom:1.25rem;font-size:1.25rem;line-height:1.4}.featurette-heading{font-size:50px}}@media (min-width: 62em){.featurette-heading{margin-top:7rem}}
+body{background:black;padding-top:1rem;padding-bottom:3rem;color:#5a5a5a}.carousel{margin-bottom:4rem}.carousel-caption{bottom:3rem;z-index:10}.carousel-item{height:38rem;background-color:#777}.carousel-item>img{position:absolute;top:0;left:0;min-width:100%;height:38rem}.marketing .col-lg-4{margin-bottom:1.5rem;text-align:center}.marketing h2{font-weight:400}.marketing .col-lg-4 p{margin-right:.75rem;margin-left:.75rem}.featurette-divider{margin:5rem 0}.featurette-heading{font-weight:300;line-height:1;letter-spacing:-.05rem}@media (min-width: 40em){.carousel-caption p{margin-bottom:1.25rem;font-size:1.25rem;line-height:1.4}.featurette-heading{font-size:50px}}@media (min-width: 62em){.featurette-heading{margin-top:7rem}}
 </style>
 </head>
   <body>
@@ -9,41 +9,34 @@ body{background:black;padding-top:3rem;padding-bottom:3rem;color:#5a5a5a}.carous
     <main role="main">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <% n=0 %>
+          <% Item.find_each do |item| %>
+            <% n = n + 1 %>
+            <li data-target="#myCarousel" data-slide-to="<%= n %>"></li>
+          <% end %>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Customized Layout</h1>
-                <p>Maybe you need more pizazz than a simple landing page and if you can describe it I can build it. on this page I used a rotating carousel of slides to display different aspects of what I offer. The call to action button on this slide takes to to a page with various examples of page layouts and options</p>
-                <p><a class="btn btn-lg btn-primary" href="/styles" role="button">More styles and pages</a></p>
+          <% n = 0 %>
+          <% Item.find_each do |item| %>
+            <% n = n + 1 %>
+              <% if n==1 %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
+              <% end %>    
+              <% photo = Photo.find(item.photo_id) %>
+              <img class="slide_<%= n %>" src="<%= url_for(photo.image) %>" alt="slide #<%= n %>">
+              <div class="container">
+                <div class="carousel-caption text-left bglight" style="padding-left: 2rem; padding-right: 2rem;">
+                  <%= raw(nget_style item, n) %>
+                  <h1 class="pf_<%= n %> pc_<%= n %>"><%= item.title %></h1>
+                  <h2 class="sf_<%= n %> sc_<%= n %>"><%= item.heading %></h2>
+                  </p class="pf_<%= n %> pc_<%= n %>"><%= item.body.slice(0..499) %></p>
+                  <p><%= link_to "..More", item_path(item), :class=>"bgdark btn btn-sm btn-outline-success" %></p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Flexible pricing</h1>
-                <p>My goal is to help you design the website for whatever you need to acomplish at a price that is aligned with your budget.. I have some examples here but the options are unlimited</p>
-                <p><a class="btn btn-lg btn-primary" href="/pricing" role="button">Get an Estimated cost</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>Results matter</h1>
-                <p>Landing pages, forms, mailing lists, custom built interfaces to other web services google, facebook, twitter, etc. I've been building full featured applications from front to back since the mid 90's</p>
-                <p><a class="btn btn-lg btn-primary" href="/technologies" role="button">Technologies Used</a></p>
-              </div>
-            </div>
-          </div>
+          <% end %>
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
