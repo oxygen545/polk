@@ -27,7 +27,7 @@ body{background:black;padding-top:1rem;padding-bottom:3rem;color:#5a5a5a}.carous
               <% photo = Photo.find(item.photo_id) %>
               <img class="slide_<%= n %>" src="<%= url_for(photo.image) %>" alt="slide #<%= n %>">
               <div class="container">
-                <div class="carousel-caption text-left bglight" style="padding-left: 2rem; padding-right: 2rem;">
+                <div class="carousel-caption text-left bgmed" style="padding-left: 2rem; padding-right: 2rem;">
                   <%= raw(nget_style item, n) %>
                   <h1 class="pf_<%= n %> pc_<%= n %>"><%= item.title %></h1>
                   <h2 class="sf_<%= n %> sc_<%= n %>"><%= item.heading %></h2>
