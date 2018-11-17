@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :styles
-  get "/example" to "visitors#example"  
+  get "/example" => "visitors#example"  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
