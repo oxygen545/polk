@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'damon@hopkins-family.org'
+  default from: ENV['MESSAGE_ADMIN_EMAIL']
   layout 'mailer'
 end
