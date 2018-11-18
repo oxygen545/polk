@@ -1,7 +1,8 @@
 module StylesHelper
 	def get_style item
 		style = Style.find(item.style_id)
-    	@mystyle = "<style type='text/css'> .pf { font-family: " + style.primary_font + "; } "
+    	@mystyle = "<style type='text/css'>"
+    		@mystyle = @mystyle + ".pf { font-family: " + style.primary_font + "; } "
 			@mystyle = @mystyle + ".sf { font-family: " + style.secondary_font + "; } "
 			@mystyle = @mystyle + ".af { font-family: " + style.alt_font + "; }"
 			@mystyle = @mystyle + ".pc { color: " + style.primary_color + "; }"

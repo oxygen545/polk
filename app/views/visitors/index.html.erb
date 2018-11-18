@@ -1,35 +1,45 @@
-<%= raw(get_style Item.take) %>
+<%= raw(get_style Item.find(1)) %>
+<% @style = Style.find(1) %>
+<% @page_link = "/visitors/slavery" %>
+<% @images = Photo.where(page_name: "index") %>
+<% @image_one = @images.find_by sequence: "1" %>
+<% @image_two = @images.find_by sequence: "2" %>
+<style>
+.row {
+  width: "75%";
+}
 
+a {
+  color:<%= @style.alt_color %>;
+  font-family: <%= @style.primary_font %>;
+}
+
+a:hover {
+  text-decoration: none;
+  color: <%= @style.secondary_color %>;
+}
+body {
+  color: <%= @style.alt_color %>;
+}
+h1 {
+  font-size: 57px;
+}
+h2 {
+  font-size: 32px;
+}
+</style>
 </head>
-  <body class="text-center bgcover">
-    <p id="notice"><%= notice %></p>
-    <main role="main" class="cover-container d-flex h-100 p-3 m-auto flex-column" >
-      <div class="cover-container inner cover center">
-        <div class="card bglight" style="width: 80%; padding-bottom: 4rem;">
-          <h3 class="card-title pf pc mt-5 mb-3" align="center">
-            Welcome <smaller>to </smaller>
-          </h3>
-          <h1 class="sc"><%= ENV['SITE_TITLE'] %></h1>
-          <div class="card-body">
-            <h1 class="sf sc card-subtitle mt-5">Enjoy</h1>
-            <div class="card-footer">
-              <%= link_to "Enjoy", "/items", :class => "btn btn-outline-primary focus" %>
-              <% if user_signed_in? %>
-                <%= link_to "User Pages", "/users", :class => "btn btn-outline-secondary ml-2" %>
-              <% end %>
-              <% if admin_user_signed_in? %>
-                <%= link_to "Admin Pages", "/admin", :class => "btn btn-outline-secondary ml-2" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+  <body class="text-align" style="background-color: black;">
+    <p id="notice" class="notice"><%= notice %></p>
+      <div class="row"><div class="col-sm-12" style="padding-top: 1rem; padding-bottom: 1rem;"><a href="<%= @page_link %>" style="float: left; padding-left: 7.5rem;"><%= image_tag @image_one.image, :style => "width: 15rem;"%></a><a href="<%= @page_link %>" style="float: right; padding-right: 7.5rem;"><%= image_tag @image_two.image , :style =>"width: 10rem;"%></a></div></div>
+      <div class="row center"><div class="col-sm-12 pf pc"><h2><%= link_to "\"Who is", @page_link %></h2></div></div>
+      <div class="row text-center"><div class="col-sm-12 pf pc"><h1><%= link_to raw("James K.<br>Polk?\""), @page_link %>  </h1></div></div>
+      <div class="row text-center"><div class="col-sm-12 pf pc" style="padding-top: 2rem;"><%= link_to raw("<h4>A New Play By<br>Kevin Alcock</h4>"), @page_link %></div></div>
+      <div class="row mx-auto" style="width:75%;">
+        <div class="col pf pc" style="text-align: left; padding-top: 3.25rem;"><%= link_to raw("<h4>Directed By<br>Anne Connally</h4>"), @page_link %></div>
+        <div class="col pf pc" style="text-align: right; padding-top: 3.25rem;"><%= link_to raw("<h4>With Neil Mayer<br>as James K. Polk</h4>"),@page_link  %></div>
       </div>
-    </main>
-<% if user_signed_in? %>
-<div class="fixed-bottom bglight center" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
-  <% copyrt = "&copy;" %>
-  <p style="text-align: center;">
-    <%= link_to 'New Item', new_item_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
-    <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn bgdark btn-sm btn-outline-info"%></p>
-</div>
-<% end %>
+    <% copyrt = "&copy;" %>
+    <div class="row fixed-bottom navbar" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
+     <div class="nav-link"><%= link_to raw(copyrt) +"2018 " + ENV['SITE_TITLE'], "https://adhoc.herokuapp.com"%></div>
+    </div>

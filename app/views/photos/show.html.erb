@@ -1,3 +1,6 @@
+<% 
+  if user_signed_in?
+%>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,14 +13,20 @@
 
 <p>
   <strong>Caption:</strong>
-  <% @photo.caption %>
+  <%= @photo.caption %>
 </p>
 
 <p>
   <strong>Sequence:</strong>
-  <% @photo.sequence %>
+  <%= @photo.sequence %>
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %> | 
 <%= button_to('Delete', photo_path, method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+<%
+else 
+	controller.redirect_to "/users/sign_in"
+
+end 
+%>

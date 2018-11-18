@@ -12,6 +12,15 @@ class UsersController < InheritedResources::Base
   def show
       @user = User.find(params[:id])
   end
+
+  def delete
+    if user_signed_in? 
+      self.destroy
+    else 
+      redirect_to "/users/sign_in"
+    end 
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)

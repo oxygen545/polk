@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+<% if @photo != nil %>
+<%  photo = @photo %>
+<% end %>
   <div class="field">
     <%= form.label :page_name %>
     <%= form.text_field :page_name %>

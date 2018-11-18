@@ -1,3 +1,6 @@
+<% 
+  if user_signed_in?
+%>
 <p id="notice"><%= notice %></p>
 
 <h1>Photos</h1>
@@ -29,3 +32,6 @@
 <br>
 
 <%= link_to 'New Photo', new_photo_path %>
+<% else 
+  controller.redirect_to "/users/sign_in"
+end %>
