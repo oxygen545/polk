@@ -11,7 +11,7 @@ class MessageMailer < ApplicationMailer
  	def message_received_email
     	@message = params[:message]
     	@url  = new_user_registration_url
-    	mail(to: ENV['MESSAGE_ADMIN_EMAIL'], subject: 'Message received about your website')
+    	mail(to: ENV['MESSAGE_BACKUP_EMAIL'], subject: 'Message received about your website')
   	end
 
 end
