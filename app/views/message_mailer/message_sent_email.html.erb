@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Greetings <%= @message.first_name %> <%= @message.last_name %></h1>
+    <p>
+      Thank you for the interest in my play.
+    </p>
+    <p>
+      To Register on our mailing list just <%= link_to "click here" , new_user_registration_url, :class=>"btn btn-sm btn-outline-success" %>
+    </p>
+    <p>Thanks for your interest and have a great day!</p><br><br>
+    <p align="center"><%= ENV['MESSAGE_ADMIN_NAME'] %></p>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Greetings, someone sent this message to your website</h1>
+    <p>
+      Name: <%= @message.first_name %>&nbsp;<%= @message.last_name %><br>
+      Email: <%= @message.email %><br>
+      Subject: <%= @message.subject %><br>
+      Message: <%= @message.body %><br>
+    </p>
+  </body>
+</html>
