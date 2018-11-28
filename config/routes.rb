@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :items
   resources :styles
   get "/example" => "visitors#example"  
+  get "/carousel" => "visitors#carousel"  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

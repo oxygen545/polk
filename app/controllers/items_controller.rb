@@ -17,13 +17,15 @@ class ItemsController < InheritedResources::Base
 
 	def edit
 		if user_signed_in? 
+			@item = Item.find(params[:id])
 		else 
 			redirect_to "/users/sign_in"
 		end 
 	end
 	
 	def index
-		if user_signed_in? 
+		if user_signed_in?
+			@items = Item.all
 		else 
 			redirect_to "/users/sign_in"
 		end 

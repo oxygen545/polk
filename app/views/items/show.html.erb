@@ -1,33 +1,78 @@
-<%= raw(get_style(@item)) %>
+<% i=0 %>
+<% @style = Style.find(@item.style_id) %>
+<% @page_link = item_path(@item) %>
+<% @photos = Photo.where(page_name: "index") %>
+<% pagephotos = Array.new(@photos.count) %>
+<% @photos.each do |p| %>
+  <% pagephotos[i] = p.image %>
+  <% i+=1 %>
+<% end %>
+
+<% horses = Photo.where(page_name: "item") %>
+<% horse_pics = Array.new(horses.count) %>
+<% i=0 %>
+<% horses.each do |horse| %>
+<%  horse_pics[i] = horse.image %>
+<% i += 1 %>
+<% end %>
+<%= raw(get_style @item) %>
+
+<style>
+
+body {
+  background-image: url(<%= url_for(horse_pics[@item.id-1]) %>);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%; }
+}
+
+.row {
+  width: "75%";
+}
+
+a {
+  color:<%= @style.secondary_color %>;
+  font-family: <%= @style.primary_font %>;
+}
+
+a:hover {
+  text-decoration: none;
+  color: <%= @style.secondary_color %>;
+}
+body {
+  color: <%= @style.alt_color %>;
+}
+h1 {
+  font-size: 57px;
+}
+h2 {
+  font-size: 32px;
+}
+</style>
 </head>
-  <body class="text-center bgcover">
-    <p id="notice"><%= notice %></p>
-    <main role="main" class="cover-container d-flex h-100 p-3 m-auto flex-column" >
-      <div class="cover-container inner cover center">
-        <div class="card bgmed" style="width: 80%; padding-bottom: 4rem;">
-          <h3 class="card-title pf pc mt-5 mb-3" align="center">
-            <%= @item.title %> <smaller>by </smaller>
-          </h3>
-          <h1 class="sc"><%= User.find(@item.user_id).username %></h1>
-          <div class="card-body">
-            <h1 class="sf sc card-subtitle mt-5"><%= @item.heading %></h1>
-          </div>
-          <div class="af pc card-text mx-5 my-5"><%= raw(@item.body) %></div>
+  <body >
+    <p id="notice" class="notice"><%= notice %></p>
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 1rem; padding-bottom: 1rem;">
+          <a href="<%= @page_link %>" style="float: left; padding-left: 7.5rem;">
+            <%= image_tag pagephotos[0], :style => "width: 15rem;"%>
+          </a>
+          <a href="<%= @page_link %>" style="float: right; padding-right: 7.5rem;">
+            <%= image_tag pagephotos[1] , :style =>"width: 10rem;"%>
+          </a>
         </div>
       </div>
-    </main>
-<% if user_signed_in? %>
-<div class="fixed-bottom bgmed center" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
-  <% copyrt = "&copy;" %>
-  <p style="text-align: center;">
-    <%= link_to 'Show Items', items_path , :class=>"btn bgdark btn-sm btn-outline-success"%>
-    <%= link_to 'Edit Item', edit_item_path(@item) , :class=>"btn bgdark btn-sm btn-outline-warning"%>
-    <%= link_to 'New Photo', new_photo_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
-    <%= link_to 'New Style', new_admin_style_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
-    <%= link_to 'New Item', new_item_path , :class=>"btn bgdark btn-sm btn-outline-info"%>
-    <%= link_to raw(copyrt) +"2018 "+ENV['SITE_TITLE'], "/" , :class=>"btn bgdark btn-sm btn-outline-success"%></p>
-</div>
-<% end %>
+      <div class="row center"><div class="col-sm-12 pf pc"><h2><%= link_to "\"Who is", @page_link %></h2></div></div>
+      <div class="row text-center"><div class="col-sm-12 pf pc"><h1><%= link_to raw("James K.<br>Polk?\""), @page_link %>  </h1></div></div>
+      <div class="row text-center"><div class="col-sm-12 pf pc" style="padding-top: 2rem;"><%= link_to raw("<h4>A New Play By<br>Kevin Alcock</h4>"), @page_link %></div></div>
+      <div class="row mx-auto" style="width:75%;">
+        <div class="col pf pc" style="text-align: left; padding-top: 3.25rem;"><%= link_to raw("<h4>Directed By<br>Anne Connolly</h4>"), @page_link %></div>
+        <div class="col pf pc" style="text-align: right; padding-top: 3.25rem;"><%= link_to raw("<h4>With Neal Mayer<br>as James K. Polk</h4>"),@page_link  %></div>
+      </div>
+    <% copyrt = "&copy;" %>
+    <div class="row fixed-bottom navbar" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
+     <div class="nav-link"><%= link_to raw(copyrt) +"2018 " + ENV['SITE_TITLE'], "https://adhoc.herokuapp.com"%></div>
+    </div>
 
 
 

@@ -10,6 +10,10 @@ def show
 	if params[:id] == "slavery"
 		render "slavery"
 	end
+	if params[:id] == "carousel"
+		render "carousel"
+	end
+
 end
 
 end
