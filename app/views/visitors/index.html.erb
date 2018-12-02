@@ -1,6 +1,6 @@
 <%= raw(get_style Item.find(1)) %>
 <% @style = Style.find(1) %>
-<% @page_link = "/visitors/slavery" %>
+<% @page_link = "/visitors/carousel" %>
 <% @images = Photo.where(page_name: "index") %>
 <% @image_one = @images.find_by sequence: "1" %>
 <% @image_two = @images.find_by sequence: "2" %>

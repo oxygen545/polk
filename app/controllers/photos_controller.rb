@@ -1,8 +1,9 @@
 class PhotosController < InheritedResources::Base
 
-	def create
-		@photo = Style.new(params[:photo].permit(:page_name, :caption, :sequence, :image))
-	end
+#	def create
+#		@photo = Photo.new(params[:photo].permit(:page_name, :caption, :sequence, :image))
+#		redirect_to photo_path(@photo)
+#	end
 
 	def show
 		@photo = Photo.find(params[:id])

@@ -1,10 +1,11 @@
 
 <%= stylesheet_link_tag "carousel" %>
+<% @images = Photo.where(page_name: "carousel") %>
 </head>
   <body background = "">
     <%= alert %>
     <%= notice %>
-    <header>
+<!--    <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Navigation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,48 +30,37 @@
         </div>
       </nav>
     </header>
+-->
     <main role="main">
-
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <% i = 0 %>
+          <% while i < @images.count %>
+          <% if i == 0 %>
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <% else %>
+            <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+          <% end %>
+          <% i = i + 1 %>
+          <% end %>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <% @myimage = Photo.where(page_name: "didyouknow", sequence: 2) %>
-            <img class="first-slide" src="<%= url_for(@myimage.take.image) %>" alt="First slide" style="min-width: 50%;">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1 style="text-shadow: -3px 4px #000000;">Did you Know?</h1>
-                <p style="text-shadow: -1px 2px #000000;">Polk laid the cornerstone of the Washington Monument, choose the site of the Smithsonian Institute, started the Navel Acaademy in Annapolis and  created the modern postal system...and they were not even on his list of goals</p>
-                <!-- <p><a class="btn btn-lg btn-primary" href="/slavery" role="button"></a></p> -->
+          <% i = 0 %>
+          <% while i < @images.count %>
+            <% if i == 0 %>
+              <div class="carousel-item active">
+            <% else %>
+              <div class="carousel-item">
+            <% end %>
+                <% @myimage = @images.find_by sequence: i %>
+                <img class="first-slide" src="<%= url_for(@myimage.image) %>" alt="First slide" style="min-width: 50%;">
+                <div class="container">
+                  <div class="carousel-caption text-left" style="text-shadow: -2px 2px #000000;"><%=raw(@myimage.caption) %>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Politics and Slavery</h1>
-                <p>Polk's political actions on slavery varied depending on which elected position he held. As a US Congressman representing a slave-holding constituency, he voted for every pro-slavery measure brought before Congress. As Speaker of the US House, however, his main goal was to keep the business of government moving forward.</p>
-                <a href="#slavery" class="btn btn-lg btn-info">More</a><br><br>
-                <div class="row d-grid" style="background: #e3b675; height: 2rem; width: 105%;">&nbsp;</div>
-                <div class="row d-grid" style="height: 2rem;">&nbsp;</div>
-                <div class="row d-grid" style="background: #a95161; height: 2rem; width: 105%;">&nbsp;</div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="/album" role="button">Album</a></p>
-              </div>
-            </div>
-          </div>
+            <% i = i + 1 %>
+          <% end %>
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

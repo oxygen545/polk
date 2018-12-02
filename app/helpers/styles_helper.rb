@@ -38,9 +38,9 @@ module StylesHelper
   				@mystyle = @mystyle + "background-size: 100% x 100%;}"
     		end
       		@mystyle = @mystyle + "</style>"
-      		@mystyle = @mystyle + "<link href=https://fonts.googleapis.com/css?family=" + "style.primary_font" +" rel='stylesheet'>"
-      		@mystyle = @mystyle + "<link href=https://fonts.googleapis.com/css?family=" + "style.secondary_font" +" rel='stylesheet'>"
-      		@mystyle = @mystyle + "<link href=https://fonts.googleapis.com/css?family=" + "style.alt_font" +" rel='stylesheet'>"
+#      		@mystyle = @mystyle + "<link href='https://fonts.googleapis.com/css?family=" + style.primary_font + "' rel='stylesheet'>"
+ #     		@mystyle = @mystyle + "<link href='https://fonts.googleapis.com/css?family=" + style.secondary_font + "' rel='stylesheet'>"
+  #    		@mystyle = @mystyle + "<link href='https://fonts.googleapis.com/css?family=" + style.alt_font + "' rel='stylesheet'>"
 
       		get_style = @mystyle
     end
@@ -83,7 +83,7 @@ module StylesHelper
   				@mystyle = @mystyle + "background-size: 100% x 100%;}"
     		end
       		@mystyle = @mystyle + "</style>"
-      		get_style = @mystyle
+      		nget_style = @mystyle
     end
 
 end
