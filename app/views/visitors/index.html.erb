@@ -1,45 +1,67 @@
 <%= raw(get_style Item.find(1)) %>
 <% @style = Style.find(1) %>
-<% @page_link = "/visitors/carousel" %>
+<% @page_link = "/visitors/carousel#" %>
 <% @images = Photo.where(page_name: "index") %>
-<% @image_one = @images.find_by sequence: "1" %>
-<% @image_two = @images.find_by sequence: "2" %>
+<% @image_one = @images.find_by sequence: "0" %>
+<% @image_two = @images.find_by sequence: "1" %>
 <style>
 .row {
   width: "75%";
 }
 
 a {
-  color:<%= @style.alt_color %>;
+  color:<%= @style.secondary_color %>;
   font-family: <%= @style.primary_font %>;
 }
 
 a:hover {
   text-decoration: none;
-  color: <%= @style.secondary_color %>;
+  color: <%= @style.primary_color %>;
 }
 body {
-  color: <%= @style.alt_color %>;
+  color: <%= @style.secondary_color %>;
 }
 h1 {
-  font-size: 57px;
+  font-size: 22vw;
 }
 h2 {
-  font-size: 32px;
+  font-size: 14vw;
 }
+h3 {
+  font-size: 4vw;
+}
+h4 {
+  font-size: 2vw;
+}
+
 </style>
 </head>
-  <body class="text-align" style="background-color: black;">
+  <body class="text-align" style="background-color: white;">
     <p id="notice" class="notice"><%= notice %></p>
-      <div class="row"><div class="col-sm-12" style="padding-top: 1rem; padding-bottom: 1rem;"><a href="<%= @page_link %>" style="float: left; padding-left: 7.5rem;"><%= image_tag @image_one.image, :style => "width: 15rem;"%></a><a href="<%= @page_link %>" style="float: right; padding-right: 7.5rem;"><%= image_tag @image_two.image , :style =>"width: 10rem;"%></a></div></div>
-      <div class="row center"><div class="col-sm-12 pf pc"><h2><%= link_to "\"Who is", @page_link %></h2></div></div>
-      <div class="row text-center"><div class="col-sm-12 pf pc"><h1><%= link_to raw("James K.<br>Polk?\""), @page_link %>  </h1></div></div>
-      <div class="row text-center"><div class="col-sm-12 pf pc" style="padding-top: 2rem;"><%= link_to raw("<h4>A New Play By<br>Kevin Alcock</h4>"), @page_link %></div></div>
-      <div class="row mx-auto" style="width:75%;">
-        <div class="col pf pc" style="text-align: left; padding-top: 3.25rem;"><%= link_to raw("<h4>Directed By<br>Anne Connolly</h4>"), @page_link %></div>
-        <div class="col pf pc" style="text-align: right; padding-top: 3.25rem;"><%= link_to raw("<h4>With Neal Mayer<br>as James K. Polk</h4>"),@page_link  %></div>
+      <div class="row">
+        <div class="col center" style="text-align: justify-all;">
+          <%= link_to image_tag(@image_one.image , :style => "width: 40vw;"), @page_link %><br>
+          <%= link_to image_tag(@image_two.image , :style => "width: 40vw;"), @page_link %><br>
+          <h2 style="padding-top: 4rem;"><%= link_to "\"Who is", @page_link %></h2><br>
+          <h2 style="padding-top: 2rem;"><%= link_to raw("James K."), @page_link %></h2><br>
+          <h1 style="padding-top: 2rem;"><%= link_to raw("Polk<br>?\""), @page_link %></h1><br>
+        </div>
+      </div>
+      <div class="rox mx-auto center">
+        <div class="col center">
+          <h4><%= link_to raw("A New Play By<br>Kevin J. Alcock"), @page_link +"Kevin"%><br><br><br><br></h4>
+        </div>
+      </div>
+      <div class="row mx-auto"">
+        <div class="col m-auto" style="text-align: left;">
+          <h4><%= link_to raw("Directed By<br>Anne Connolly"), @page_link +"Anne"%></h4>
+        </div>
+        <div class="col m-auto" style="text-align: right;">
+          <h4><%= link_to raw("With Neal Mayer<br>as James K. Polk"),@page_link+"Neal" %></h4>
+        </div>
       </div>
     <% copyrt = "&copy;" %>
-    <div class="row fixed-bottom navbar" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
+<!--    <div class="row navbar" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
      <div class="nav-link"><%= link_to raw(copyrt) +"2018 " + ENV['SITE_TITLE'], "https://adhoc.herokuapp.com"%></div>
     </div>
+-->

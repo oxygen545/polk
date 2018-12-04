@@ -1,12 +1,12 @@
 class ItemsController < InheritedResources::Base
 
-	def create
-		if user_signed_in? 
-			@item = Item.new(params[:item].permit(:title, :heading, :body, :style_id, :user_id, :photo_id))
-		else 
-			redirect_to "/users/sign_in"
-		end 
-	end
+#	def create
+#		if user_signed_in? 
+#			@item = Item.new(params[:item].permit(:title, :heading, :body, :style_id, :user_id, :photo_id))
+#		else 
+#			redirect_to "/users/sign_in"
+#		end 
+#	end
 
 	def show
 		if user_signed_in?

@@ -41,13 +41,13 @@
     <% end %>
   <div class="card m-auto h-100 bgimg_<%= i %>" style="width: 90%; padding-top:3rem; padding-bottom: 4rem;">
     <div class="card-body bgmed" style="width:90%;" >
-      <div class="card-title pf_<%= i %> pc_<%= i %>"><h5><%= item.title %></h5></div>
-      <div class="card-subtitle sc_<%= i %> sf_<%= i %>" >
-        <h6 class="sf_<%= i %> sc_<%= i %>"><%= item.heading %></h6> by <h6><%= User.find(item.user_id).username %></h6>
+      <div class="card-title pf_<%= i %> pc_<%= i %>"><h5><%= raw(item.title) %></h5></div>
+      <div class="card-subtitle pc_<%= i %> sf_<%= i %>" >
+        <h6 class="pf_<%= i %> pc_<%= i %>"><%= raw(item.heading) %></h6> created by: <h6><%= User.find(item.user_id).username %></h6>
       </div>
-      <div class="card-text af_<%= i %> ac_<%= i %>" style="width:50%;"><%= raw(item.body) %><%= link_to "...more", item %><br><br>
+      <div class="card-text pf_<%= i %> pc_<%= i %>" style="width:50%;"><%= raw(item.body) %><%= link_to "...more", item %><br><br>
       </div>
-      <div class="card-footer bgclear af_<%= i %> ac_<%= i %>" style="width:50%; padding-top: 1rem;">
+      <div class="card-footer bgclear af_<%= i %> pc_<%= i %>" style="width:50%; padding-top: 1rem;">
         <%= link_to 'Show', item , :class =>"bgdark btn btn-sm btn-outline-success" %>
         <% if user_signed_in? %>
           <%= link_to 'Edit', edit_item_path(item), :class =>"bgdark btn btn-sm btn-outline-warning"  %>

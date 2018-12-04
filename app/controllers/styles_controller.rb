@@ -17,6 +17,7 @@ class StylesController < InheritedResources::Base
 
 	def edit
 		if user_signed_in? 
+			@style =  Style.find(params[:id])
 		else 
 			redirect_to "/users/sign_in"
 		end 

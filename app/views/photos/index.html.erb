@@ -16,6 +16,7 @@
   </thead>
 
   <tbody>
+    <% @photos = Photo.all.order('page_name ASC, sequence ASC')%>
     <% @photos.each do |photo| %>
       <tr>
         <td><%= photo.page_name %></td>

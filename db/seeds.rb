@@ -1,24 +1,27 @@
 User.create!([
-  {username: "Damon Hopkins", email: "damon@hopkins-family.org", encrypted_password: "$2a$11$kQGUNSCYpnhhOqGcATZLhu2ivyQ/EUfBmfesGZ0k0XT85us1cbqc2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2018-12-02 20:04:52", last_sign_in_at: "2018-12-02 04:58:53", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmation_token: "P1PGt6pP2mKE6ss9DGNb", confirmed_at: nil, confirmation_sent_at: "2018-12-02 04:54:29", unconfirmed_email: nil}
+  {username: "Damon Hopkins", email: "damon@hopkins-family.org", password: "password", password_confirmation: "password"}
 ])
 AdminUser.create!([
-  {email: "admin@example.com", encrypted_password: "$2a$11$UVRgfh2K9JHCfIDOYCv3n.NK7KDK5oQLYOQ0CdvcDreC/gK2x30Kq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
+  {email: "damon@hopkins-family.org", password: "password", password_confirmation: "password"}
 ])
 Photo.create!([
-  {page_name: "index", caption: "Play Image", sequence: 1},
-  {page_name: "index", caption: "Play Image", sequence: 2},
-  {page_name: "carousel", caption: "<h1 style=\"text-shadow: -3px 2px #000000; text-align: right;\">\r\nJames and Sarah Polk\r\n</h1>\r\n<p style=\"text-shadow: -1px 1px #000000; text-align-right\">\r\nmarried 18XX-18XX\r\n</p>", sequence: 0},
-  {page_name: "carousel", caption: "Henry Clay", sequence: 2},
-  {page_name: "carousel", caption: "Map of Mexico", sequence: 1},
-  {page_name: "carousel", caption: "Gravestone", sequence: 3},
-  {page_name: "carousel", caption: "Mexican War", sequence: 4},
-  {page_name: "carousel", caption: "Portrait", sequence: 5}
+  {page_name: "index", caption: "Whitehouse", sequence: 0},
+  {page_name: "index", caption: "tophat", sequence: 1},
+  {page_name: "carousel_photo", caption: " portrait", sequence: 0},
+  {page_name: "carousel_photo", caption: "Play Still Image", sequence: 1},
+  {page_name: "carousel_photo", caption: "married_portrait", sequence: 2},
+  {page_name: "carousel", caption: "James K. Polk, in full James Knox Polk, (born November 2, 1795, Mecklenburg county, North Carolina, U.S.—died June 15, 1849, Nashville, Tennessee), 11th president of the United States (1845–49).", sequence: 0},
+  {page_name: "carousel", caption: "Map of Mexico before the US Mexican War", sequence: 1},
+  {page_name: "carousel", caption: "Henry Clay Sr. was an American lawyer, planter, and statesman who represented Kentucky in both the United States Senate and House of Representatives represented by the Whig Party and ran againts Polk.", sequence: 2},
+  {page_name: "carousel", caption: "When James K. Polk accepted the Democratic Party's nomination for the presidency, he was not very well known. ... He was called a \"dark horse\" candidate because he was not expected to beat his opponent, Henry Clay of the Whig Party, to become the 11th president of the United States.", sequence: 3},
+  {page_name: "carousel", caption: "Photo of Polk's Gravesite", sequence: 4},
+  {page_name: "carousel", caption: "President Polk declares war on Mexico. On May 13, 1846, the U.S. Congress overwhelmingly votes in favor of President James K. Polk's request to declare war on Mexico ina dispute over Texas. ... But in 1844, President John Tyler restarted negotiations with the Republic of Texas, culminating with a Treaty of Annexation.", sequence: 5}
 ])
 Style.create!([
-  {stylename: "Default Reds", description: "DarkRed Coral and Tomato", primary_font: "Roboto", secondary_font: "Lobster Two", alt_font: "Times New Roman", primary_color: "#ff1616", secondary_color: "#ae0000", alt_color: "#ffd2c5"},
-  {stylename: "Default Blues", description: "Basic Style Blue and Cyan", primary_font: "Lobster Two", secondary_font: "Lobster Two", alt_font: "Lobster Two", primary_color: "#65d8ff", secondary_color: "#0a03ad", alt_color: "#959cb7"},
-  {stylename: "Default Greens", description: "Basic Greens", primary_font: "Lobster Two", secondary_font: "Lobster Two", alt_font: "Lobster Two", primary_color: "#c1ffc1", secondary_color: "#cacdca", alt_color: "#31ff37"}
+  {stylename: "Default", description: "Blacks and Greys", primary_font: "Times New Roman", secondary_font: "Lobster Two", alt_font: "Times New Roman", primary_color: "#aaaaaa", secondary_color: "#111111", alt_color: "#000000"},
 ])
 Item.create!([
-  {title: "Cover Page Project", heading: "Working with ActiveStorage", body: "Lots to do.. to get active storage to work with having things hosted in the cloud vs on the local file system.\r\nDuring deployment I learned all kinds of good things dealing with putting the configuration into environment variables. All new things but seem like valid concepts. Lots to manage in the ENV though.\r\nBack in the day you set your environment and you were done. Not so these days.\r\n<a href=\"/\" class=\"btn btn-sm btn-secondary\">Visit</a>", style_id: 1, user_id: 1, photo_id: 1}
+  {title: "carousel", heading: "\"Who Is James K. Polk?\"", body: "- a new play by Kevin J. Alcock - \r\nAlcock's play humorously presents the former President as he attempts to defend his legacy to a modern audience who barely knows his name. The only U.S. President to have first acted as Speaker of the House of Representatives, Polk may have only served for one term, but in those four years, he waged the Mexican-American War, and added Texas, California and the Oregon Territory to the United States. He also indirectly led us into the U.S. Civil War. \"Who Is James K. Polk?\" explores the many facets of this \"dark horse\" candidate who unexpectedly went on to become one of the most hands-on executives ever to occupy the White House.", style_id: 1, user_id: 1, photo_id: 9},
+  {title: "carousel", heading: "Did you Know?", body: "Polk laid the cornerstone of the Washington Monument, choose the site of the Smithsonian Institute, started the Navel Academy in Annapolis and  created the modern postal system...and they were not even on his list of goals", style_id: 1, user_id: 1, photo_id: 3},
+  {title: "carousel", heading: "Politics in Slavery", body: "Polk's political actions on slavery varied depending on which elected position he held. As a US Congressman representing a slave-holding constituency, he voted for every pro-slavery measure brought before Congress. As Speaker of the US House, however, his main goal was to keep the business of government moving forward. He thought that the increasingly high numbers of pro and anti-slave memorials coming before congress hindered good government and threatened the country's stability. To stifle both sides, Polk invoked the \"gag\" rule\" that prevented and legislation regarding slavery from being brought to the floor for discussion. As Governor of Tennessee when the state was divided over the issue (East Tennessee was strongly anti-slavery), Polk's views once again reflected that split, and his course on slavery was fairly moderate. As President of the United States when the country was struggling with the implications of the \"peculiar institution,\" Polk once again tried to keep slavery from becoming an issue, fearing that it could tear the country apart.", style_id: 1, user_id: 1, photo_id: 9}
 ])

@@ -1,6 +1,8 @@
-
+<%= raw(get_style Item.find(1)) %>
+<% @style = Style.find(1) %>
 <%= stylesheet_link_tag "carousel" %>
-<% @images = Photo.where(page_name: "carousel") %>
+<% images = Photo.where(page_name: "carousel") %>
+<% image_count = images.count %>
 </head>
   <body background = "">
     <%= alert %>
@@ -35,31 +37,31 @@
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <% i = 0 %>
-          <% while i < @images.count %>
+          <% while i < image_count %>
           <% if i == 0 %>
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <% else %>
-            <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
+            <li data-target="#myCarousel" data-slide-to="<%= i %>" class=""></li>
           <% end %>
           <% i = i + 1 %>
           <% end %>
         </ol>
         <div class="carousel-inner">
           <% i = 0 %>
-          <% while i < @images.count %>
-            <% if i == 0 %>
-              <div class="carousel-item active">
-            <% else %>
-              <div class="carousel-item">
-            <% end %>
-                <% @myimage = @images.find_by sequence: i %>
-                <img class="first-slide" src="<%= url_for(@myimage.image) %>" alt="First slide" style="min-width: 50%;">
-                <div class="container">
-                  <div class="carousel-caption text-left" style="text-shadow: -2px 2px #000000;"><%=raw(@myimage.caption) %>
+          <% while i < image_count %>
+              <% myimage = images.find_by sequence: i %>
+              <% if i == 0 %>
+                <div class="carousel-item active mx-auto">
+                  <img class="first-slide" src="<%= url_for(myimage.image) %>" alt="slide <%= i %>" style="float: left; min-width: 10%; min-height: 50%;" >
+              <% else %>
+                <div class="carousel-item mx-auto">
+                  <img class="slide-<%= i %>" src="<%= url_for(myimage.image) %>" alt="slide <%= i %>" style="min-width: 10%; min-height: 50%; float: right;" >
+              <% end %>
+                  <div class="container">
+                    <div class="carousel-caption text-right pc" style="text-shadow: -1px 1px #000000; font-size: 2.5vw;"><%= raw(myimage.caption) %></div>
                   </div>
                 </div>
-              </div>
-            <% i = i + 1 %>
+                <% i = i + 1 %>
           <% end %>
         </div>
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -80,69 +82,50 @@
       <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-4" id="slavery">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Politics in Slavery</h2>
-            <p>Polk's political actions on slavery varied depending on which elected position he held. As a US Congressman representing a slave-holding constituency, he voted for every pro-slavery measure brought before Congress. As Speaker of the US House, however, his main goal was to keep the business of government moving forward. He thought that the increasingly high numbers of pro and anti-slave memorials coming before congress hindered good government and threatened the country's stability. To stifle both sides, Polk invoked the "gag" rule" that prevented and legislation regarding slavery from being brought to the floor for discussion. As Governor of Tennessee when the state was divided over the issue (East Tennessee was strongly anti-slavery), Polk's views once again reflected that split, and his course on slavery was fairly moderate. As President of the United States when the country was struggling with the implications of the "peculiar institution," Pols once again tried to keep slavery from becoming an issue, fearing that it could tar the country apart.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="row text-center" style="padding-top: 2rem;">
+          <div class="col-lg-6" id="Kevin">
+            <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
+            <h2 class="pc">Kevin J. Alcock, Author,</h2><br>
+            <p class="pc"> has written numerous one acts that have been performed in the New York area. "WHO IS JAMES K. POLK?" is his first biographical play. Kevin is currently working on a full-length play about Theodore "Ted" Kaczynski, known to the world as the Unabomber. Kevin has worked in film, television and theater in every area from acting to production to catering.</p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <div class="col-lg-6" id="Neal">
+            <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
+            <h2 class="pc">Neal Mayer,</h2><br>
+            <p class="pc">who will portray Polk in this one-hour piece, has appeared on television in "Blue Bloods", "All My Children," "The Tonight Show with Jimmy Fallon," and "Late Night". In addition to appearing in the Broadway production of LES MISERABLES, Mayer has toured the country with PRISCILLA QUEEN OF THE DESERT, starred off-Broadway in MARK FELT, SUPERSTAR and Forbidden Broadway and acted at many of the premiere U.S. regional theaters including La Jolla Playhouse, Paper Mill Playhouse, Arena Stage, Ogunquit Playhouse, Goodspeed, and Bay Street Theater. He can be also be heard as St. Aphrodisius on the Studio Cast Recording of Alan Menken & Stephen Schwartz's THE HUNCHBACK OF NOTRE DAME. Neal is appearing courtesy of Actors' Equity Association.</p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <div class="col-lg-6" id="Anne">
+            <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
+            <h2 class="pc">Anne Connolly, Director,</h2><br>
+            <p class="pc">likes to think she has something in common with Polk in that she too toured throughout Tennessee long ago. However, Anne toured as an actor with the Chamber Theater Ensemble, not as a politician. Since then she has worked in theaters throughout the NY/ NJ area as director, actor and writer. Recently she directed Betsy Newberry's one-woman show "On Becoming a Marine," a finalist in NYC's 2017 Strawberry Festival. At the Aery Theater Company's 20/ 20 Festival up in Garrison, NY earlier this fall, Anne won Best Actress.</p>
           </div><!-- /.col-lg-4 -->
+          <div class="col-lg-6" id="Roxanne">
+            <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
+            <h2 class="pc">Roxanne De Luna, Wig Designer and Builder,</h2><br>
+            <p class="pc">has been the Ogunquit Playhouse Company, Wig Shop Supervisor for the 2017 & 2018 seasons. She is currently represented at the Ogunquit Playhouse as the Wig & Makeup Designer for ELF THE MUSICAL. Roxanne was born and raised in El Paso, Texas. She is a traveler to various locations creating art with wigs and makeup.</p>
+          </div>
         </div><!-- /.row -->
 
-
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <% items = Item.all %>
+    <% carousel_count = items.count %>
+    <% i = 0 %>
+    <% while i < carousel_count %>
+      <% item = items[i] %>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <div class="featurette-heading pc"><h2><%= raw(item.heading) %></h2>
           </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.min.js/500x500/auto" alt="Generic placeholder image">
-          </div>
+          <p class="lead pc"><%= raw(item.body) %></p>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.min.js/500x500/auto" alt="Generic placeholder image">
-          </div>
+        <div class="col-md-5">
+          <% myimage = Photo.find_by(page_name: "carousel_photo", sequence: i) %>
+          <%= image_tag  myimage.image, :class =>"featurette-image img-fluid mx-auto" , :alt => myimage.caption %>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" data-src="holder.min.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-
-      </div><!-- /.container -->
+      </div>
+      <hr class="featurette-divider">
+      <% i = i + 1 %>
+    <% end %>
+    <!-- /END THE FEATURETTES -->
+  </div><!-- /.container -->
 </main>
