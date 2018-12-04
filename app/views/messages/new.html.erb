@@ -8,37 +8,47 @@
 }
 
 a {
-  color:<%= @style.alt_color %>;
+  color:<%= @style.primary_color %>;
+  text-shadow: 1px 1px #FAFAFA;
   font-family: <%= @style.primary_font %>;
 }
 
 a:hover {
   text-decoration: none;
-  color: <%= @style.secondary_color %>;
+  text-shadow: -1px -1px #FAFAFA;
+  color: <%= @style.alt_color %>;
 }
+
 body {
   padding-left: 2rem; 
   padding-right: 2rem; 
   padding-bottom: 2rem; 
+  color:<%= @style.primary_color %>;
+  background-color: #FAFAFA;
+  text-shadow: 1px 1px #FAFAFA;
 }
 
 h1 {
   font-size: 72px;
-  text-shadow: -3px 4px #000000;
+  text-shadow: 3px 3px #FAFAFA;
+  color:<%= @style.alt_color %>;
 }
 h2 {
   font-size: 68px;
+  text-shadow: 2px 3px #FAFAFA;
+  color:<%= @style.primary_color %>;
 }
 
 h3 {
   font-size: 32px;
-  text-shadow: -1px 1px #FEFEFE;
+  text-shadow: 1px 1px #FEFEFE;
+  color:<%= @style.primary_color %>;
+}
 
-} 
 </style>
 
 </head>
-  <body class="text-align" style="background: <%= @style.primary_color %>;" >
+  <body class="text-align">
   	<p style="padding-top: 3rem;" id="notice" class="notice"><%= notice %></p>
   	<div class="container">
       <div class="row text-center">
@@ -48,7 +58,7 @@ h3 {
       </div>
       <div class="row center">
       	<div class="col-sm-4 pf ac m-auto">
-      		<p style="padding-left: 1rem; padding-top: 0rem; text-align: left;">Thank you for your interest in our play. Please use this form to get in contact with us and we will be happy to send you some more information on how you can experince this theatrical production, answer and questions or address any comments you might have. We look forward to hearing from you.</p>
+      		<p style="padding-left: 1rem; padding-top: 0rem; text-align: left;">Thank you for your interest in our play. Please use this form to get in contact with us and we will be happy to send you some more information on how you can experience this theatrical production, answer and questions or address any comments you might have. We look forward to hearing from you.</p>
       	</div>
       	<div class="col-sm-7 m-auto" style="padding-top: 2rem; padding-bottom: 2rem;" >
           <% message = @message %>
@@ -64,10 +74,12 @@ h3 {
               </div><br>
             <% end %>          
             <div align="left">
-              <%= form.text_field :first_name , :placeholder => "James" ,:style=>"text-align: right; width: 39%; margin-bottom: 1rem; margin-right: 1rem;"%><%= form.text_field :last_name , :placeholder => "Polk" ,:style=>"width: 39%; margin-bottom: 1rem;" %><br>
-              <%= form.text_field :email, :placeholder => "youraddress@email.com" ,:style=>"text-align: center; width: 80%; margin-bottom: 1rem;"%><br>
-              <%= form.text_field :subject , :placeholder => "Subject" ,:style=>"text-align: center; width: 80%; margin-bottom: 1rem;"%><br>
-              <%= form.text_area :body , :style => "rows: 8;", :placeholder => "What can I do for you?",:style=>"text-align: center; width: 80%;"%><br>
+              <% form_bg = "#CAFE" %>
+              <%= form.text_field :first_name , :placeholder => "James" ,:style=>"text-align: right; width: 39%; margin-bottom: .5rem; margin-right: .5rem; background-color: "+form_bg+";"%>
+              <%= form.text_field :last_name , :placeholder => "Polk" ,:style=>"width: 39%; margin-bottom: .5rem; background-color: "+form_bg+";"%><br>
+              <%= form.text_field :email, :placeholder => "youraddress@email.com" ,:style=>"text-align: center; width: 80%; margin-bottom: .5rem; background-color: "+form_bg+";"%><br>
+              <%= form.text_field :subject , :placeholder => "Subject" ,:style=>"text-align: center; width: 80%; margin-bottom: .5rem; background-color: "+form_bg+";"%><br>
+              <%= form.text_area :body , :style => "rows: 8;", :placeholder => "What can I do for you?",:style=>"text-align: center; width: 80%; background-color: "+form_bg+";"%><br>
               <div class="center" style="width:80%;padding-top: .5rem;"><%= form.submit %></div>
             </div>
           <% end %>
@@ -77,8 +89,9 @@ h3 {
       <div class="row d-grid" style="height: 2rem;">&nbsp;</div>
       <div class="row d-grid" style="background: #a95161; height: 2rem; width: 103%;">&nbsp;</div>
     </div>
-    <% copyrt = "&copy;" %>
+<!--    <% copyrt = "&copy;" %>
     <div class="row fixed-bottom navbar" style="width: 100%; padding-top: 1rem; padding-bottom: 0;">
       <div class="nav-link"><%= link_to "Back to Home", "/", :class=>"ac btn btn-small btn-outline-info"%></div>
       <div class="nav-link"><%= link_to raw(copyrt) +"2018 " + ENV['SITE_TITLE'], "https://adhoc.herokuapp.com"%></div>
     </div>
+    -->

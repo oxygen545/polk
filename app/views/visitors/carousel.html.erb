@@ -7,9 +7,9 @@
   <body background = "">
     <%= alert %>
     <%= notice %>
-<!--    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Navigation</a>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Links</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,20 +19,19 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/messages/new">Contact</a>
+              <a class="nav-link" href="/messages/new">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="#">Press Release 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Press Release 2</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
       </nav>
     </header>
--->
+    <br>
     <main role="main">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -73,13 +72,22 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      <%#
+        Jumbotron for Video
+      %>
+      <div class="jumbotron">
+        <div class="container center">
+          <h1 class="display-3">"Who Is James K. Polk?"</h1><br>
+          <% movie = Photo.find_by caption: "trailer" %>
+          <p><video controls="" name="media"><source src="<%= url_for(movie.image) %>" type="video/mp4"></video>
+          <p><a class="btn btn-primary btn-lg" href="<%= new_message_path %>" role="button">Learn more &raquo;</a></p>
+        </div>
+      </div>
 
-
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-
-      <div class="container marketing">
+      <%#
+        Credits
+      %>
+      <div class="container">
 
         <!-- Three columns of text below the carousel -->
         <div class="row text-center" style="padding-top: 2rem;">
@@ -105,7 +113,10 @@
           </div>
         </div><!-- /.row -->
 
-    <!-- START THE FEATURETTES -->
+<%#
+          Features
+%>
+
     <hr class="featurette-divider">
     <% items = Item.all %>
     <% carousel_count = items.count %>
